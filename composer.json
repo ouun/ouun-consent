@@ -1,7 +1,7 @@
 {
     "name": "ouun/consent",
     "description": "Privacy and consent module. Forked from humanmade/altis-consent & extended.",
-    "type": "package",
+    "type": "wordpress-plugin",
     "require": {
         "php": ">=7.1",
         "altis/consent-api": "^1.0.5"
