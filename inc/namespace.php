@@ -59,7 +59,7 @@ function enqueue_assets() {
 		$ver .= '-' . filemtime( plugin_dir_path( __DIR__ ) . 'dist/css/styles.css' );
 	}
 
-	wp_enqueue_script( 'ouun-consent', $js, [ 'ouun-consent-api' ], $ver, true );
+	wp_enqueue_script( 'ouun-consent', $js, [ 'altis-consent-api' ], $ver, true );
 	wp_enqueue_style( 'ouun-consent', $css, [], $ver, 'screen' );
 
 	wp_localize_script( 'ouun-consent', 'ouunConsent', [
