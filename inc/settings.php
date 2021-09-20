@@ -17,11 +17,24 @@ use WP_Privacy_Policy_Content;
  */
 function bootstrap() {
 	add_action( 'admin_init', __NAMESPACE__ . '\\register_consent_settings' );
+    add_action( 'current_screen', __NAMESPACE__ . '\\redirect_native_policy_page' );
 	add_action( 'admin_init', __NAMESPACE__ . '\\update_privacy_policy_page' );
 	add_action( 'admin_init', __NAMESPACE__ . '\\create_policy_page', 9 );
 	add_action( 'admin_menu', __NAMESPACE__ . '\\add_ouun_privacy_page' );
 	add_action( 'admin_menu', __NAMESPACE__ . '\\remove_core_privacy_page' );
 	add_filter( 'wp_consent_api_cookie_expiration', __NAMESPACE__ . '\\register_cookie_expiration' );
+    add_filter(
+        'admin_body_class',
+        function( $body_class ) {
+            $current_screen = get_current_screen();
+
+            if ( isset( $current_screen->base ) && 'settings_page_ouun_privacy' === $current_screen->base ) {
+                $body_class .= ' privacy-settings ';
+            }
+
+            return $body_class;
+        }
+    );
 }
 
 /**
@@ -38,6 +51,17 @@ function remove_core_privacy_page() {
  */
 function register_cookie_expiration() {
 	return get_consent_option( 'cookie_expiration', 30 );
+}
+
+function redirect_native_policy_page() {
+    if ( is_admin() ) {
+        $current_screen = get_current_screen();
+
+        if ( isset( $current_screen->base ) && 'options-privacy' === $current_screen->base && ! isset( $_GET['tab'] ) ) {
+            wp_redirect( admin_url().'options-general.php?page=ouun_privacy' );
+            exit();
+        }
+    }
 }
 
 /**
@@ -361,17 +385,45 @@ function validate_privacy_options( $dirty ) {
  */
 function render_ouun_privacy_page() {
 	?>
-	<div class="wrap">
-		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-		<form action="options.php" method="post">
-			<?php
+    <div class="privacy-settings-header">
+        <div class="privacy-settings-title-section">
+            <h1>
+                <?php _e( 'Privacy' ); ?>
+            </h1>
+        </div>
 
-			settings_fields( 'cookie_consent_options' );
-			do_settings_sections( 'ouun_privacy' );
-			?>
-			<input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Save Privacy Settings', 'ouun-consent' ); ?>" />
-		</form>
-	</div>
+        <nav class="privacy-settings-tabs-wrapper hide-if-no-js" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
+            <a href="<?php echo esc_url( admin_url( 'options-privacy.php' ) ); ?>" class="privacy-settings-tab active" aria-current="true">
+                <?php
+                /* translators: Tab heading for Site Health Status page. */
+                _ex( 'Settings', 'Privacy Settings' );
+                ?>
+            </a>
+
+            <a href="<?php echo esc_url( admin_url( 'options-privacy.php?tab=policyguide' ) ); ?>" class="privacy-settings-tab">
+                <?php
+                /* translators: Tab heading for Site Health Status page. */
+                _ex( 'Policy Guide', 'Privacy Settings' );
+                ?>
+            </a>
+        </nav>
+    </div>
+
+    <hr class="wp-header-end">
+
+    <div class="privacy-settings-body hide-if-no-js">
+        <div class="wrap">
+            <form action="options.php" method="post">
+                <?php
+
+                settings_fields( 'cookie_consent_options' );
+                do_settings_sections( 'ouun_privacy' );
+                ?>
+                <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Save Privacy Settings', 'ouun-consent' ); ?>" />
+            </form>
+        </div>
+    </div>
+
 	<?php
 }
 

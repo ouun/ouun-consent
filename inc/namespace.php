@@ -41,6 +41,11 @@ function bootstrap() {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 		add_action( 'wp_footer', __NAMESPACE__ . '\\load_consent_banner' );
 	}
+
+    // Load translations
+    add_action('init', function () {
+        load_plugin_textdomain( 'ouun-consent', false, dirname( plugin_basename( __FILE__ ), 2 ) . '/languages' );
+    });
 }
 
 /**
@@ -51,7 +56,7 @@ function enqueue_assets() {
 	$css = plugin_dir_url( __DIR__ ) . 'dist/css/styles.css';
 	$ver = '1.0.0';
 
-	if ( !Ouun\is_local() ) {
+	if ( class_exists('Ouun') && Ouun\is_local() ) {
 		// If working locally, load the unminified version of the js file.
 		$js = plugin_dir_url( __DIR__ ) . 'assets/js/main.js';
 

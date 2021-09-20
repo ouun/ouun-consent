@@ -7,6 +7,10 @@
 	bottom: 0;
 	z-index: 99;
 
+	@supports (backdrop-filter: none) {
+		backdrop-filter: blur(10px);
+	}
+
 	.close-message {
 		background: transparent;
 		padding: 3px;

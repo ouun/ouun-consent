@@ -1,0 +1,605 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ouun Consent\n"
+"POT-Creation-Date: 2021-09-20 14:56+0200\n"
+"PO-Revision-Date: 2021-09-20 15:51+0200\n"
+"Last-Translator: Philipp Wellmer <philipp@ouun.io>\n"
+"Language-Team: Philipp Wellmer <philipp@ouun.io>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: plugin.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+
+#: inc/cookie-policy.php:29
+msgid "Introduction"
+msgstr "Einführung"
+
+#: inc/cookie-policy.php:31
+#, php-format
+msgid ""
+"Our website, %s (hereinafter: \"the website\") uses cookies and other "
+"related technologies (for convenience all technologies are referred to as "
+"\"cookies\"). Cookies are also placed by third parties we have engaged. In "
+"the document below we inform you about the use of cookies on our website."
+msgstr ""
+"Unsere Webseite %s (nachfolgend \"die Webseite\") verwendet Cookies und "
+"ähnliche Technologien (der Einfachheit halber werden all diese unter "
+"“Cookies” zusammengefasst). Cookies werden außerdem von uns beauftragten "
+"Drittparteien platziert. In dem unten stehendem Dokument informieren wir Sie "
+"über die Verwendung von Cookies auf unserer Webseite."
+
+#: inc/cookie-policy.php:32
+msgid "What are cookies?"
+msgstr "Was sind Cookies?"
+
+#: inc/cookie-policy.php:33
+msgid ""
+"A cookie is a small simple file that is sent along with pages of this "
+"website and stored by your browser on the hard drive of your computer or "
+"another device. The information stored therein may be returned to our "
+"servers or to the servers of the relevant third parties during a subsequent "
+"visit."
+msgstr ""
+"Ein Cookie ist eine kleine einfache Datei, die zusammen mit Seiten dieser "
+"Website gesendet und von Ihrem Browser auf der Festplatte Ihres Computers "
+"oder eines anderen Geräts gespeichert wird. Die darin gespeicherten "
+"Informationen können bei einem späteren Besuch an unsere Server oder an die "
+"Server der betreffenden Dritten zurückgegeben werden."
+
+#: inc/cookie-policy.php:34
+msgid "What are scripts?"
+msgstr "Was sind Skripte?"
+
+#: inc/cookie-policy.php:35
+msgid ""
+"A script is a piece of program code that is used to make our website "
+"function properly and interactively. This code is executed on our server or "
+"on your device."
+msgstr ""
+"Ein Skript ist ein Stück Programmcode, das verwendet wird, um unsere Website "
+"ordnungsgemäß und interaktiv funktionieren zu lassen. Dieser Code wird auf "
+"unserem Server oder auf Ihrem Gerät ausgeführt."
+
+#: inc/cookie-policy.php:36
+msgid "Consent"
+msgstr "Zustimmung"
+
+#: inc/cookie-policy.php:37
+msgid ""
+"When you visit our website for the first time, we will show you a pop-up "
+"with an explanation about cookies. As soon as you click the button to accept "
+"cookies, you consent to us using all cookies and plug-ins as described in "
+"the pop-up and this Cookie Policy. You can disable the use of cookies via "
+"your browser, but please note that our website may no longer work properly."
+msgstr ""
+"Wenn Sie unsere Website zum ersten Mal besuchen, zeigen wir Ihnen ein Pop-up "
+"mit einer Erklärung zu Cookies. Sobald Sie auf die Schaltfläche klicken, um "
+"Cookies zu akzeptieren, stimmen Sie zu, dass wir alle Cookies und Plug-Ins "
+"verwenden, wie im Pop-up und in dieser Cookie-Richtlinie beschrieben. Sie "
+"können die Verwendung von Cookies über Ihren Browser deaktivieren, aber "
+"bitte beachten Sie, dass unsere Website möglicherweise nicht mehr "
+"ordnungsgemäß funktioniert."
+
+#: inc/cookie-policy.php:38
+msgid "Technical or functional cookies"
+msgstr "Technische oder funktionale Cookies"
+
+#: inc/cookie-policy.php:39
+msgid ""
+"Some cookies ensure that certain parts of the website work properly and that "
+"your user preferences remain known. By placing functional cookies, we make "
+"it easier for you to visit our website. This way, you do not need to "
+"repeatedly enter the same information when visiting our website and, for "
+"example, the items remain in your shopping cart until you have paid. We may "
+"place these cookies without your consent."
+msgstr ""
+"Einige Cookies stellen sicher, dass bestimmte Teile der Website "
+"ordnungsgemäß funktionieren und dass Ihre Benutzerpräferenzen bekannt "
+"bleiben. Durch das Platzieren funktionaler Cookies erleichtern wir Ihnen den "
+"Besuch unserer Website. Auf diese Weise müssen Sie beim Besuch unserer "
+"Website nicht wiederholt dieselben Informationen eingeben und zum Beispiel "
+"bleiben die Artikel in Ihrem Warenkorb, bis Sie bezahlt haben. Wir können "
+"diese Cookies ohne Ihre Zustimmung platzieren."
+
+#: inc/cookie-policy.php:40
+msgid "Analytical cookies"
+msgstr "Analytische Cookies"
+
+#: inc/cookie-policy.php:41
+msgid ""
+"We use analytical cookies to optimize the website experience for our users. "
+"With these analytical cookies we get insights in the usage of our website."
+msgstr ""
+"Wir verwenden analytische Cookies, um das Website-Erlebnis für unsere Nutzer "
+"zu optimieren. Mit diesen analytischen Cookies erhalten wir Einblicke in die "
+"Nutzung unserer Website."
+
+#: inc/cookie-policy.php:42
+msgid ""
+"Some of these statistics are tracked anonymously. No permission is asked to "
+"place these analytical cookies."
+msgstr ""
+"Einige dieser Statistiken werden anonym verfolgt. Es wird keine Erlaubnis "
+"eingebeten, diese analytischen Cookies zu platzieren."
+
+#: inc/cookie-policy.php:43
+msgid "For all others, we ask your permission to place analytical cookies."
+msgstr ""
+"Für alle anderen bitten wir Sie um Ihre Erlaubnis, analytische Cookies zu "
+"platzieren."
+
+#: inc/cookie-policy.php:44
+msgid "Advertising cookies"
+msgstr "Werbe-Cookies"
+
+#: inc/cookie-policy.php:46
+#, php-format
+msgid ""
+"On this website we may use tracking cookies, enabling us to gain insights "
+"into the campaign results. This happens based on a profile we create based "
+"on your behavior on %s. With these cookies you, as website visitor are "
+"linked to a unique ID, but will not profile your behavior and interests to "
+"serve personalized ads."
+msgstr ""
+"Auf dieser Website können wir Tracking-Cookies verwenden, die es uns "
+"ermöglichen, Einblicke in die Kampagnenergebnisse zu erhalten. Dies "
+"geschieht auf der Grundlage eines Profils, das wir basierend auf Ihrem "
+"Verhalten auf %s erstellen. Mit diesen Cookies sind Sie als Website-Besucher "
+"mit einer eindeutigen ID verknüpft, werden aber kein Profil Ihres Verhaltens "
+"und Ihrer Interessen erstellen, um personalisierte Anzeigen zu schalten."
+
+#: inc/cookie-policy.php:47
+msgid ""
+"Because these cookies are marked as tracking cookies, we ask your permission "
+"to place these."
+msgstr ""
+"Da diese Cookies als Tracking-Cookies markiert sind, bitten wir Sie um Ihre "
+"Erlaubnis, diese zu platzieren."
+
+#: inc/cookie-policy.php:48
+msgid "Social media buttons"
+msgstr "Social-Media-Schaltflächen"
+
+#: inc/cookie-policy.php:49
+msgid ""
+"On our website there may be buttons for social media sites to promote "
+"webpages (e.g. “like”, “pin”) or share (e.g. “tweet”) on social networks. "
+"These buttons work using pieces of code coming from those social networks "
+"themselves. This code places cookies. These social media buttons also can "
+"store and process certain information, so a personalized advertisement can "
+"be shown to you."
+msgstr ""
+"Auf unserer Webseite kann es Schaltflächen für Social-Media-Seiten geben, um "
+"Webseiten zu bewerben (z. B. \"Gefällt mir\", \"Pin\") oder in sozialen "
+"Netzwerken zu teilen (z. B. \"Tweet\"). Diese Schaltflächen funktionieren "
+"mit Codeteilen, die von diesen sozialen Netzwerken selbst stammen. Dieser "
+"Code platziert Cookies. Diese Social-Media-Buttons können auch bestimmte "
+"Informationen speichern und verarbeiten, so dass Ihnen eine personalisierte "
+"Werbung angezeigt werden kann."
+
+#: inc/cookie-policy.php:50
+msgid ""
+"Please read the privacy statement of these social networks (which can change "
+"regularly) to read what they do with your (personal) data which they process "
+"using these cookies. The data that is retrieved is anonymized as much as "
+"possible."
+msgstr ""
+"Bitte lesen Sie die Datenschutzerklärung dieser sozialen Netzwerke (die sich "
+"regelmäßig ändern können), um zu lesen, was sie mit Ihren (persönlichen) "
+"Daten tun, die sie mit diesen Cookies verarbeiten. Die abgerufenen Daten "
+"werden so weit wie möglich anonymisiert."
+
+#: inc/cookie-policy.php:51
+msgid "Your rights with respect to personal data"
+msgstr "Ihre Rechte in Bezug auf personenbezogene Daten"
+
+#: inc/cookie-policy.php:53
+msgid ""
+"You have the right to know why your personal data is needed, what will "
+"happen to it, and how long it will be retained for."
+msgstr ""
+"Sie haben das Recht zu erfahren, warum Ihre personenbezogenen Daten benötigt "
+"werden, was mit ihr geschieht und wie lange sie aufbewahrt werden."
+
+#: inc/cookie-policy.php:54
+msgid ""
+"Right of access: You have the right to access your personal data that is "
+"known to us."
+msgstr ""
+"Recht auf Zugang: Sie haben das Recht auf Zugang zu Ihren uns bekannten "
+"personenbezogenen Daten."
+
+#: inc/cookie-policy.php:55
+msgid ""
+"Right to rectification: you have the right to supplement, correct, have "
+"deleted or blocked your personal data whenever you wish."
+msgstr ""
+"Recht auf Berichtigung: Sie haben das Recht, Ihre personenbezogenen Daten "
+"jederzeit zu ergänzen, zu korrigieren, zu löschen oder zu sperren."
+
+#: inc/cookie-policy.php:56
+msgid ""
+"If you give us your consent to process your data, you have the right to "
+"revoke that consent and to have your personal data deleted."
+msgstr ""
+"Wenn Sie uns Ihre Einwilligung zur Verarbeitung Ihrer Daten erteilen, haben "
+"Sie das Recht, diese Einwilligung zu widerrufen und Ihre personenbezogenen "
+"Daten löschen zu lassen."
+
+#: inc/cookie-policy.php:57
+msgid ""
+"Right to transfer your data: you have the right to request all your personal "
+"data from the controller and transfer it in its entirety to another "
+"controller."
+msgstr ""
+"Recht auf Übermittlung Ihrer Daten: Sie haben das Recht, alle Ihre "
+"personenbezogenen Daten vom für die Verarbeitung Verantwortlichen "
+"anzufordern und vollständig an einen anderen für die Verarbeitung "
+"Verantwortlichen zu übermitteln."
+
+#: inc/cookie-policy.php:58
+msgid ""
+"Right to object: you may object to the processing of your data. We comply "
+"with this, unless there are justified grounds for processing."
+msgstr ""
+"Widerspruchsrecht: Sie können der Verarbeitung Ihrer Daten widersprechen. "
+"Wir halten uns daran, es sei denn, es liegen berechtigte Gründe für die "
+"Verarbeitung vor."
+
+#: inc/cookie-policy.php:60
+msgid ""
+"To exercise these rights, please contact us. Please refer to the contact "
+"details at the bottom of this Cookie Policy. If you have a complaint about "
+"how we handle your data, we would like to hear from you, but you also have "
+"the right to submit a complaint to the supervisory authority (the Data "
+"Protection Authority)."
+msgstr ""
+"Um diese Rechte auszuüben, kontaktieren Sie uns bitte. Bitte beachten Sie "
+"die Kontaktdaten am Ende dieser Cookie-Richtlinie. Wenn Sie eine Beschwerde "
+"darüber haben, wie wir mit Ihren Daten umgehen, würden wir gerne von Ihnen "
+"hören, aber Sie haben auch das Recht, eine Beschwerde bei der "
+"Aufsichtsbehörde (der Datenschutzbehörde) einzureichen."
+
+#: inc/cookie-policy.php:61
+msgid "Enabling, disabling and deleting cookies"
+msgstr "Aktivieren, Deaktivieren und Löschen von Cookies"
+
+#: inc/cookie-policy.php:62
+msgid ""
+"You can use your internet browser to automatically or manually delete "
+"cookies. You can also specify that certain cookies may not be placed. "
+"Another option is to change the settings of your internet browser so that "
+"you receive a message each time a cookie is placed. For more information "
+"about these options, please refer to the instructions in the Help section of "
+"your browser."
+msgstr ""
+"Sie können Ihren Internetbrowser verwenden, um Cookies automatisch oder "
+"manuell zu löschen. Sie können auch festlegen, dass bestimmte Cookies "
+"möglicherweise nicht platziert werden. Eine weitere Möglichkeit besteht "
+"darin, die Einstellungen Ihres Internetbrowsers so zu ändern, dass Sie bei "
+"jedem Absetzen eines Cookies eine Nachricht erhalten. Weitere Informationen "
+"zu diesen Optionen finden Sie in den Anweisungen im Hilfebereich Ihres "
+"Browsers."
+
+#: inc/cookie-policy.php:63
+msgid ""
+"Please note that our website may not work properly if all cookies are "
+"disabled. If you do delete the cookies in your browser, they will be placed "
+"again after your consent when you visit our websites again."
+msgstr ""
+"Bitte beachten Sie, dass unsere Website möglicherweise nicht richtig "
+"funktioniert, wenn alle Cookies deaktiviert sind. Wenn Sie die Cookies in "
+"Ihrem Browser löschen, werden sie nach Ihrer Zustimmung wieder platziert, "
+"wenn Sie unsere Websites erneut besuchen."
+
+#: inc/cookie-policy.php:64
+msgid "Contact details"
+msgstr "Kontaktdetails"
+
+#: inc/cookie-policy.php:65
+msgid ""
+"For questions and/or comments about our Cookie Policy and this statement, "
+"please contact us by using the following contact details:"
+msgstr ""
+"Bei Fragen und/oder Kommentaren zu unserer Cookie-Richtlinie und dieser "
+"Erklärung kontaktieren Sie uns bitte unter den folgenden Kontaktdaten:"
+
+#: inc/cookie-policy.php:66
+msgid "[Organization Name]"
+msgstr "[Name der Organisation]"
+
+#: inc/cookie-policy.php:67
+msgid "[Company Address]"
+msgstr "[Firmenadresse]"
+
+#: inc/cookie-policy.php:68
+msgid "[Company Country]"
+msgstr "[Firmenland]"
+
+#: inc/cookie-policy.php:70
+#, php-format
+msgid "Website: %s"
+msgstr "Webseite: %s"
+
+#: inc/cookie-policy.php:72
+#, php-format
+msgid "Email: %s"
+msgstr "E-Mail: %s"
+
+#: inc/cookie-policy.php:80
+msgid "[Company Telephone]"
+msgstr "[Firmentelefon]"
+
+#: inc/settings.php:131 inc/settings.php:252
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+#: inc/settings.php:135
+msgid "Cookie Policy"
+msgstr "Cookie Richtlinien"
+
+#: inc/settings.php:159
+#, php-format
+msgid "Unable to create a %s page"
+msgstr "Eine %s Seite konnte nicht erstellt werden"
+
+#: inc/settings.php:175
+msgid "Privacy Settings"
+msgstr "Datenschutzeinstellungen"
+
+#: inc/settings.php:176 inc/settings.php:391
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#: inc/settings.php:190
+msgid "Display Cookie Consent Banner"
+msgstr "Cookie-Zustimmungsbanner anzeigen"
+
+#: inc/settings.php:195
+msgid "Cookie Expiration"
+msgstr "﻿Cookie-Gültigkeitsdauer"
+
+#: inc/settings.php:200
+msgid "Consent Banner Options"
+msgstr "Optionen für Zustimmungsbanner"
+
+#: inc/settings.php:205
+msgid "Banner Message"
+msgstr "Banner-Nachricht"
+
+#: inc/settings.php:210
+msgid "Cookie Policy Page"
+msgstr "Cookie Richtlinienseite"
+
+#: inc/settings.php:230
+msgid "Allow/Deny All Cookies"
+msgstr "Alle Cookies zulassen/ablehnen"
+
+#: inc/settings.php:234
+msgid "All Cookie Categories"
+msgstr "Alle Cookie-Kategorien"
+
+#: inc/settings.php:262
+msgid "Cookie Consent"
+msgstr "Cookie Zustimmung"
+
+#: inc/settings.php:292
+msgid ""
+"The currently selected Privacy Policy page does not exist. Please create or "
+"select a new page."
+msgstr ""
+"Die aktuell ausgewählte Seite der Datenschutzrichtlinien existiert nicht. "
+"Bitte erstellen oder wählen Sie eine neue Seite aus."
+
+#. translators: %s: URL to Pages Trash.
+#: inc/settings.php:302
+#, php-format
+msgid ""
+"The currently selected Privacy Policy page is in the Trash. Please create or "
+"select a new Privacy Policy page or <a href=\"%s\">restore the current page</"
+"a>."
+msgstr ""
+"Die aktuell ausgewählte Datenschutzrichtlinie befindet sich im Papierkorb. "
+"Bitte erstelle wähle eine neue Datenschutzrichtlinienseite aus oder <a href="
+"\"%s\">stellen Sie die aktuelle Seite wieder her</a>."
+
+#: inc/settings.php:313
+msgid "Update your Privacy Policy page"
+msgstr "Aktualisieren Sie Ihre Datenschutzrichtlinie"
+
+#: inc/settings.php:313
+msgid "Select a Privacy Policy page"
+msgstr "Seite mit der Datenschutzerklärung auswählen"
+
+#: inc/settings.php:327
+msgid ""
+"As a website owner, you may need to follow national or international privacy "
+"laws. For example, you may need to create and display a Privacy Policy."
+msgstr ""
+"Als Inhaber der Website müssen Sie unter Umständen nationale oder "
+"internationale Datenschutzgesetze befolgen. Zum Beispiel müssen Sie "
+"eventuell eine Datenschutzrichtlinie erstellen und anzeigen."
+
+#: inc/settings.php:328
+msgid ""
+"If you already have a Privacy Policy page, please select it below. If not, "
+"please create one."
+msgstr ""
+"Wenn Sie bereits eine Seite über die Datenschutzrichtlinie haben, wählen Sie "
+"diese bitte unten aus. Wenn nicht, erstellen Sie bitte eine."
+
+#: inc/settings.php:331
+msgid "The new page will include help and suggestions for your Privacy Policy."
+msgstr ""
+"Die neue Seite enthält Hilfe und Anregungen für Ihre Datenschutzbestimmungen."
+
+#: inc/settings.php:332
+msgid ""
+"However, it is your responsibility to use those resources correctly, to "
+"provide the information that your Privacy Policy requires, and to keep that "
+"information current and accurate."
+msgstr ""
+"Es liegt jedoch in Ihrer Verantwortung, diese Ressourcen korrekt zu nutzen, "
+"die Informationen zur Verfügung zu stellen, die Ihre Datenschutzrichtlinie "
+"verlangt, und diese Informationen aktuell und genau zu halten."
+
+#: inc/settings.php:335
+msgid "After your Privacy Policy page is set, we suggest that you edit it."
+msgstr ""
+"Nachdem Ihre Datenschutzseite gesetzt wurde, empfehlen wir Ihnen, diese zu "
+"bearbeiten."
+
+#: inc/settings.php:336
+msgid ""
+"We would also suggest reviewing your Privacy Policy from time to time, "
+"especially after installing or updating any themes or plugins. There may be "
+"changes or new suggested information for you to consider adding to your "
+"policy."
+msgstr ""
+"Wir schlagen auch vor, Ihre Datenschutzrichtlinien von Zeit zu Zeit zu "
+"überprüfen, insbesondere nach der Installation oder Aktualisierung von "
+"Themen oder Plugins. Es kann Änderungen oder neue Informationen geben, die "
+"Sie in Erwägung ziehen, Ihre Richtlinien zu ergänzen."
+
+#: inc/settings.php:395
+msgid "Secondary menu"
+msgstr "Sekundäres Menü"
+
+#. translators: Tab heading for Site Health Status page.
+#: inc/settings.php:399
+msgctxt "Privacy Settings"
+msgid "Settings"
+msgstr "Einstellungen"
+
+#. translators: Tab heading for Site Health Status page.
+#: inc/settings.php:406
+msgctxt "Privacy Settings"
+msgid "Policy Guide"
+msgstr "Richtlinien-Leitfaden"
+
+#: inc/settings.php:422
+msgid "Save Privacy Settings"
+msgstr "Einstellungen speichern"
+
+#: inc/settings.php:476
+msgid "Do not display banner"
+msgstr "Banner nicht anzeigen"
+
+#: inc/settings.php:479
+msgid "Display consent banner"
+msgstr "Zustimmungsbanner anzeigen"
+
+#: inc/settings.php:493
+msgid "How long, in days, cookies should be stored."
+msgstr "Wie lange, in Tagen, Cookies gespeichert werden sollten."
+
+#: inc/settings.php:514
+msgid ""
+"If you would like to display an option to configure each cookie category in "
+"the consent banner, select All Cookie Categories."
+msgstr ""
+"Wenn Sie eine Option zur Konfiguration jeder Cookie-Kategorie im "
+"Zustimmungsbanner anzeigen möchten, wählen Sie Alle Cookie-Kategorien aus."
+
+#: inc/settings.php:515
+msgid ""
+"If you would like to only display an option to accept or deny all non-"
+"functional cookies, select Allow/Deny All Cookies."
+msgstr ""
+"Wenn Sie nur eine Option zum Akzeptieren oder Ablehnen aller nicht "
+"funktionalen Cookies anzeigen möchten, wählen Sie Alle Cookies zulassen/"
+"ablehnen aus."
+
+#: inc/settings.php:531
+msgid "This site uses cookies to provide a better user experience."
+msgstr ""
+"Diese Website verwendet Cookies, um eine bessere Benutzererfahrung zu bieten."
+
+#: inc/settings.php:597 inc/settings.php:618
+msgid "Select an option"
+msgstr "Wählen Sie eine Option"
+
+#: inc/settings.php:603 inc/settings.php:624
+msgid "There are no pages."
+msgstr "Es gibt keine Seiten."
+
+#: inc/settings.php:606
+msgid "Create Cookie Policy Page"
+msgstr "Seite \"Cookie-Richtlinie\" erstellen"
+
+#: inc/settings.php:627
+msgid "Create Privacy Policy Page"
+msgstr "Seite \"Datenschutzrichtlinie\" erstellen"
+
+#: tmpl/button-row.php:42
+msgid "Accept all cookies"
+msgstr "Allen Cookies zustimmen"
+
+#: tmpl/button-row.php:46
+msgid "Accept only functional cookies"
+msgstr "Nur funktionale Cookies zustimmen"
+
+#: tmpl/button-row.php:51
+msgid "Cookie preferences"
+msgstr "Cookie-Einstellungen"
+
+#: tmpl/consent-banner.php:15
+#, php-format
+msgid ""
+"No consent option has been set. Please visit the <a href=\"%s\">Privacy "
+"Settings page</a> and set the consent banner option."
+msgstr ""
+"Es wurde keine Zustimmungsoption festgelegt. Bitte besuche die <a href=\"%s"
+"\">Datenschutzeinstellungen</a> und setze die Einstellungen zum "
+"Zustimmungsbanner."
+
+#: tmpl/consent-updated.php:12
+msgid "Cookie preferences updated."
+msgstr "Cookie-Einstellungen aktualisiert."
+
+#: tmpl/consent-updated.php:14
+msgid "Close"
+msgstr "Schließen"
+
+#: tmpl/cookie-consent-policy.php:20
+msgid "Read our cookie policy"
+msgstr "Cookie-Richtlinie lesen"
+
+#: tmpl/cookie-preferences.php:39
+msgid "Apply Changes"
+msgstr "Änderungen übernehmen"
+
+#. Plugin Name of the plugin/theme
+msgid "Ouun Consent"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/humanmade/altis-consent"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Hooks into the Consent API to provide basic settings and a cookie consent "
+"banner."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Human Made, ouun.io"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://ouun.io"
+msgstr ""

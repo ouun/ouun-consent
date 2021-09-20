@@ -27,7 +27,7 @@ $all_categories = $options['banner_options'] === 'all-categories';
 		<?php if ( $policy_page ) : ?>
 			<?php
 				/**
-				 * Allow the cookie consent policy template path to be overridden so it can be customized individually. This template displays the link to the cookie policy page, but only if a cookie policy page has been set.
+				 * Allow the cookie consent policy template path to be overridden, so it can be customized individually. This template displays the link to the cookie policy page, but only if a cookie policy page has been set.
 				 *
 				 * @var string The path to the cookie consent policy template.
 				 */
@@ -38,16 +38,16 @@ $all_categories = $options['banner_options'] === 'all-categories';
 		<?php endif; ?>
 	</div>
 
-	<button class="give-consent">
+	<button class="button give-consent">
 		<?php echo esc_html( apply_filters( 'ouun.consent.accept_all_cookies_button_text', __( 'Accept all cookies', 'ouun-consent' ) ) ); ?>
 	</button>
 
-	<button class="revoke-consent">
+	<button class="button revoke-consent">
 		<?php echo esc_html( apply_filters( 'ouun.consent.accept_only_functional_cookies_button_text', __( 'Accept only functional cookies', 'ouun-consent' ) ) ); ?>
 	</button>
 
 	<?php if ( $all_categories ) : ?>
-		<button class="view-preferences">
+		<button class="button view-preferences">
 			<?php echo esc_html( apply_filters( 'ouun.consent.cookie_preferences_button_text', __( 'Cookie preferences', 'ouun-consent' ) ) ); ?>
 		</button>
 	<?php endif; ?>

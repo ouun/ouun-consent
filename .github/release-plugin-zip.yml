@@ -1,0 +1,55 @@
+name: Release installable Package
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  tag:
+    name: Release new tagged version
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout Master branch
+      - uses: actions/checkout@master
+
+      # Install PHP and Composer
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.1"
+
+      # Install Composer Deps
+      - uses: "ramsey/composer-install@v1"
+        with:
+          composer-options: "--no-dev --prefer-dist --no-interaction --quiet --optimize-autoloader"
+
+      # Build Release Zip for GitHub
+      - name: ZIP Release
+        uses: thedoctor0/zip-release@master
+        with:
+          path: '.'
+          filename: 'ouun-consent-wp-release.zip'
+          exclusions: '/tests/* /assets/* /config/* /*.config.js /*.json /*.lock .* *.git* *.xml*'
+
+      # Create GitHub Release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: Find Changelog here https://github.com/ouun/ouun-consent/blob/master/readme.txt
+          draft: false
+          prerelease: false
+
+      # One ZIP upload directly to Release
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./ouun-consent-wp-release.zip
+          asset_name: ouun-consent-wp.zip
+          asset_content_type: application/zip

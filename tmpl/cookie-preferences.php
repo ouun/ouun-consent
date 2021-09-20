@@ -35,7 +35,7 @@ $categories = Consent\consent_categories();
 		</label>
 	<?php } ?>
 
-	<button class="apply-cookie-preferences">
+	<button class="button apply-cookie-preferences">
 		<?php echo esc_html( apply_filters( 'ouun.consent.apply_cookie_preferences_button_text', __( 'Apply Changes', 'ouun-consent' ) ) ); ?>
 	</button>
 </div>
