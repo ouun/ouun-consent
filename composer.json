@@ -1,19 +1,25 @@
 {
-    "name": "altis/consent",
-    "description": "Privacy and consent module for Altis",
+    "name": "ouun/consent",
+    "description": "Privacy and consent module. Forked from humanmade/altis-consent & extended.",
     "type": "package",
     "require": {
         "php": ">=7.1",
         "altis/consent-api": "^1.0.5"
     },
     "require-dev": {
-        "humanmade/coding-standards": "^1.1.0"
+        "wp-coding-standards/wpcs": "*",
+        "squizlabs/php_codesniffer": "^3.5.4",
+        "roave/security-advisories": "dev-master"
     },
     "license": "GPL-3.0",
     "authors": [
         {
             "name": "Human Made Limited",
             "email": "hello@humanmade.com"
+        },
+        {
+            "name": "ouun.io",
+            "email": "hello@ouun.io"
         }
     ]
 }

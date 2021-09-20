@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name: Altis Consent
+ * Plugin Name: Ouun Consent
  * Plugin URI: https://github.com/humanmade/altis-consent
- * Description: Hooks into the Consent API to provide basic settings and a cookie consent banner for Altis.
+ * Description: Hooks into the Consent API to provide basic settings and a cookie consent banner.
  * Version: 1.0.6
- * Text Domain: altis-consent
+ * Text Domain: ouun-consent
  * Domain Path: /languages
- * Author: Human Made
- * Author URI: https://altis-dxp.com
+ * Author: Human Made, ouun.io
+ * Author URI: https://ouun.io
  */
 
-namespace Altis\Consent;
+namespace Ouun\Consent;
 
 require_once __DIR__ . '/inc/cookie-policy.php';
 require_once __DIR__ . '/inc/functions.php';

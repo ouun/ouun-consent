@@ -1,13 +1,14 @@
 <?php
 /**
- * Helper functions for the Altis Consent module.
+ * Helper functions for the Ouun Consent module.
+ * Forked from humanmade/altis-consent
  *
- * @package altis/consent
+ * @package ouun/consent
  */
 
-namespace Altis\Consent;
+namespace Ouun\Consent;
 
-use Altis\Consent\Settings;
+use Ouun\Consent\Settings;
 
 /**
  * Load the cookie consent banner if consent hasn't been saved previously.
@@ -21,7 +22,7 @@ function load_consent_banner() {
 		 *
 		 * @var string The path to the consent banner template.
 		 */
-		apply_filters( 'altis.consent.consent_banner_path', plugin_dir_path( __DIR__ ) . 'tmpl/consent-banner.php' )
+		apply_filters( 'ouun.consent.consent_banner_path', plugin_dir_path( __DIR__ ) . 'tmpl/consent-banner.php' )
 	);
 }
 
@@ -38,7 +39,7 @@ function should_display_banner() : bool {
 	 *
 	 * @var bool Defaults to the option on the options page, but can be overridden externally based on other logic.
 	 */
-	return (bool) apply_filters( 'altis.consent.should_display_banner', Settings\get_consent_option( 'display_banner', false ) );
+	return (bool) apply_filters( 'ouun.consent.should_display_banner', Settings\get_consent_option( 'display_banner', false ) );
 }
 
 /**
@@ -52,7 +53,7 @@ function cookie_prefix() : string {
 	 *
 	 * @param string $prefix The consent cookie prefix.
 	 */
-	return apply_filters( 'altis.consent.cookie_prefix', '_altis_consent' );
+	return apply_filters( 'ouun.consent.cookie_prefix', '_ouun_consent' );
 }
 
 /**
@@ -67,7 +68,7 @@ function consent_types() : array {
 	 * @param array $consent_types The array of allowed consent types.
 	 */
 	return apply_filters(
-		'altis.consent.types', [
+		'ouun.consent.types', [
 			'optin',
 			'optout',
 		]
@@ -85,7 +86,7 @@ function consent_categories() : array {
 	 *
 	 * @param array $categories The allowed consent categories.
 	 */
-	return apply_filters( 'altis.consent.categories', [
+	return apply_filters( 'ouun.consent.categories', [
 		'functional',
 		'preferences',
 		'statistics',
@@ -105,7 +106,7 @@ function consent_values() : array {
 	 *
 	 * @param array $values The possible consent values.
 	 */
-	return apply_filters( 'altis.consent.values', [
+	return apply_filters( 'ouun.consent.values', [
 		'allow',
 		'deny',
 	] );
@@ -155,5 +156,5 @@ function get_cookie_policy_url() : string {
 	 *
 	 * @var string The cookie policy page url.
 	 */
-	return apply_filters( 'altis.consent.cookie_policy_url', $cookie_policy_page_url );
+	return apply_filters( 'ouun.consent.cookie_policy_url', $cookie_policy_page_url );
 }

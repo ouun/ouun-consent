@@ -1,11 +1,11 @@
 {
-  "name": "altis-consent",
+  "name": "ouun-consent",
   "description": "Hooks into the Consent API to provide basic settings and a cookie consent banner for Altis.",
   "private": true,
   "main": "plugin.php",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/humanmade/altis-consent.git"
+    "url": "git+https://github.com/humanmade/ouun-consent.git"
   },
   "keywords": [
     "wordpress",
@@ -15,10 +15,6 @@
   ],
   "author": "Human Made Limited <hello@humanmade.com>",
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/humanmade/altis-consent/issues"
-  },
-  "homepage": "https://github.com/humanmade/altis-consent#readme",
   "browserlist": [
     "> 2%",
     "last 2 versions",

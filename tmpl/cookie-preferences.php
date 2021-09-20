@@ -2,10 +2,10 @@
 /**
  * Cookie Preferences
  *
- * @package Altis-Consent
+ * @package Ouun-Consent
  */
 
-use Altis\Consent;
+use Ouun\Consent;
 
 $categories = Consent\consent_categories();
 ?>
@@ -36,6 +36,6 @@ $categories = Consent\consent_categories();
 	<?php } ?>
 
 	<button class="apply-cookie-preferences">
-		<?php echo esc_html( apply_filters( 'altis.consent.apply_cookie_preferences_button_text', __( 'Apply Changes', 'altis-consent' ) ) ); ?>
+		<?php echo esc_html( apply_filters( 'ouun.consent.apply_cookie_preferences_button_text', __( 'Apply Changes', 'ouun-consent' ) ) ); ?>
 	</button>
 </div>

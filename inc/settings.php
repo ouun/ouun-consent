@@ -1,13 +1,14 @@
 <?php
 /**
- * Altis Consent Settings
+ * Ouun Consent Settings
+ * Forked from humanmade/altis-consent
  *
- * @package altis/consent
+ * @package ouun/consent
  */
 
-namespace Altis\Consent\Settings;
+namespace Ouun\Consent\Settings;
 
-use Altis\Consent\CookiePolicy;
+use Ouun\Consent\CookiePolicy;
 use WP_Post;
 use WP_Privacy_Policy_Content;
 
@@ -18,7 +19,7 @@ function bootstrap() {
 	add_action( 'admin_init', __NAMESPACE__ . '\\register_consent_settings' );
 	add_action( 'admin_init', __NAMESPACE__ . '\\update_privacy_policy_page' );
 	add_action( 'admin_init', __NAMESPACE__ . '\\create_policy_page', 9 );
-	add_action( 'admin_menu', __NAMESPACE__ . '\\add_altis_privacy_page' );
+	add_action( 'admin_menu', __NAMESPACE__ . '\\add_ouun_privacy_page' );
 	add_action( 'admin_menu', __NAMESPACE__ . '\\remove_core_privacy_page' );
 	add_filter( 'wp_consent_api_cookie_expiration', __NAMESPACE__ . '\\register_cookie_expiration' );
 }
@@ -48,8 +49,8 @@ function register_cookie_expiration() {
 function update_privacy_policy_page() {
 	if (
 		// Validate the nonce.
-		! isset( $_POST['_altis_privacy_policy_page_nonce'] ) ||
-		! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_altis_privacy_policy_page_nonce'] ) ), 'altis.privacy_policy_page' ) ||
+		! isset( $_POST['_ouun_privacy_policy_page_nonce'] ) ||
+		! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_ouun_privacy_policy_page_nonce'] ) ), 'ouun.privacy_policy_page' ) ||
 		// Bail early if we're not on the consent page.
 		! isset( $_POST['option_page'] ) ||
 		'cookie_consent_options' !== sanitize_text_field( wp_unslash( $_POST['option_page'] ) )
@@ -76,8 +77,8 @@ function update_privacy_policy_page() {
 function create_policy_page() {
 	if (
 		// Validate the nonce.
-		! isset( $_POST['_altis_privacy_policy_page_nonce'] ) ||
-		! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_altis_privacy_policy_page_nonce'] ) ), 'altis.privacy_policy_page' ) ||
+		! isset( $_POST['_ouun_privacy_policy_page_nonce'] ) ||
+		! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_ouun_privacy_policy_page_nonce'] ) ), 'ouun.privacy_policy_page' ) ||
 		// Make sure we've requested a new policy page.
 		! isset( $_POST['create_policy_page'] ) ||
 		// Make sure that the request was valid.
@@ -95,7 +96,7 @@ function create_policy_page() {
 	 *
 	 * @var bool True/false whether the site is using the block editor.
 	 */
-	$block_editor = apply_filters( 'altis.consent.use_block_editor', '__return_true' );
+	$block_editor = apply_filters( 'ouun.consent.use_block_editor', '__return_true' );
 
 	if ( $policy_page === 'privacy_policy' ) {
 		if ( ! class_exists( 'WP_Privacy_Policy_Content' ) ) {
@@ -103,11 +104,11 @@ function create_policy_page() {
 		}
 
 		$option_name         = 'wp_page_for_privacy_policy';
-		$policy_page_title   = __( 'Privacy Policy', 'altis-consent' );
+		$policy_page_title   = __( 'Privacy Policy', 'ouun-consent' );
 		$policy_page_content = WP_Privacy_Policy_Content::get_default_content( $block_editor );
 	} elseif ( $policy_page === 'cookie_policy' ) {
 		$option_name         = 'cookie_consent_options';
-		$policy_page_title   = __( 'Cookie Policy', 'altis-consent' );
+		$policy_page_title   = __( 'Cookie Policy', 'ouun-consent' );
 		$policy_page_content = CookiePolicy\get_default_content( $block_editor );
 	}
 
@@ -131,7 +132,7 @@ function create_policy_page() {
 			"page_for_$policy_page",
 			"page_for_$policy_page",
 			// Translators: %s is the name of the page we're trying to create.
-			sprintf( __( 'Unable to create a %s page', 'altis-consent' ), $policy_page_title ),
+			sprintf( __( 'Unable to create a %s page', 'ouun-consent' ), $policy_page_title ),
 			'error'
 		);
 	} else {
@@ -143,46 +144,46 @@ function create_policy_page() {
 }
 
 /**
- * Register the Altis Privacy submenu page.
+ * Register the Ouun Privacy submenu page.
  */
-function add_altis_privacy_page() {
+function add_ouun_privacy_page() {
 	add_options_page(
-		__( 'Privacy Settings', 'altis-consent' ),
-		__( 'Privacy', 'altis-consent' ),
+		__( 'Privacy Settings', 'ouun-consent' ),
+		__( 'Privacy', 'ouun-consent' ),
 		'manage_options',
-		'altis_privacy',
-		__NAMESPACE__ . '\\render_altis_privacy_page'
+		'ouun_privacy',
+		__NAMESPACE__ . '\\render_ouun_privacy_page'
 	);
 }
 
 /**
- * Return an array of Altis Consent settings.
+ * Return an array of Ouun Consent settings.
  */
 function get_cookie_consent_settings_fields() {
 	$fields = [
 		'display_banner' => [
 			'id'       => 'display_banner',
-			'title'    => __( 'Display Cookie Consent Banner', 'altis-consent' ),
+			'title'    => __( 'Display Cookie Consent Banner', 'ouun-consent' ),
 			'callback' => __NAMESPACE__ . '\\render_display_banner',
 		],
 		'cookie_expiration' => [
 			'id'       => 'cookie_expiration',
-			'title'    => __( 'Cookie Expiration', 'altis-consent' ),
+			'title'    => __( 'Cookie Expiration', 'ouun-consent' ),
 			'callback' => __NAMESPACE__ . '\\cookie_expiration',
 		],
 		'banner_options' => [
 			'id'       => 'banner_options',
-			'title'    => __( 'Consent Banner Options', 'altis-consent' ),
+			'title'    => __( 'Consent Banner Options', 'ouun-consent' ),
 			'callback' => __NAMESPACE__ . '\\render_banner_options',
 		],
 		'banner_text' => [
 			'id'       => 'banner_text',
-			'title'    => __( 'Banner Message', 'altis-consent' ),
+			'title'    => __( 'Banner Message', 'ouun-consent' ),
 			'callback' => __NAMESPACE__ . '\\render_banner_message',
 		],
 		'cookie_policy_page' => [
 			'id'       => 'cookie_policy_page',
-			'title'    => __( 'Cookie Policy Page', 'altis-consent' ),
+			'title'    => __( 'Cookie Policy Page', 'ouun-consent' ),
 			'callback' => __NAMESPACE__ . '\\render_cookie_policy_page',
 		],
 	];
@@ -192,7 +193,7 @@ function get_cookie_consent_settings_fields() {
 	 *
 	 * @var array $fields An array of settings fields with unique IDs, titles and callback functions.
 	 */
-	return apply_filters( 'altis.consent.consent_settings_fields', $fields );
+	return apply_filters( 'ouun.consent.consent_settings_fields', $fields );
 }
 
 /**
@@ -202,30 +203,30 @@ function get_cookie_banner_options() {
 	$options = [
 		[
 			'value' => 'none',
-			'label' => __( 'Allow/Deny All Cookies', 'altis-consent' ),
+			'label' => __( 'Allow/Deny All Cookies', 'ouun-consent' ),
 		],
 		[
 			'value' => 'all-categories',
-			'label' => __( 'All Cookie Categories', 'altis-consent' ),
+			'label' => __( 'All Cookie Categories', 'ouun-consent' ),
 		],
 	];
 
-	return apply_filters( 'altis.consent.banner_options', $options );
+	return apply_filters( 'ouun.consent.banner_options', $options );
 }
 
 /**
- * Register the Altis Consent settings.
+ * Register the Ouun Consent settings.
  */
 function register_consent_settings() {
-	$page    = 'altis_privacy';
+	$page    = 'ouun_privacy';
 	$section = 'cookie_consent';
 
 	register_setting( 'cookie_consent_options', 'cookie_consent_options', __NAMESPACE__ . '\\validate_privacy_options' );
 
 	add_settings_section(
 		'privacy_policy',
-		__( 'Privacy Policy', 'altis-consent' ),
-		__NAMESPACE__ . '\\altis_privacy_section',
+		__( 'Privacy Policy', 'ouun-consent' ),
+		__NAMESPACE__ . '\\ouun_privacy_section',
 		$page
 	);
 
@@ -234,12 +235,12 @@ function register_consent_settings() {
 
 	add_settings_section(
 		$section,                                  // New settings section.
-		__( 'Cookie Consent', 'altis-consent' ),   // Section title.
-		__NAMESPACE__ . '\\altis_consent_section', // Callback function.
+		__( 'Cookie Consent', 'ouun-consent' ),   // Section title.
+		__NAMESPACE__ . '\\ouun_consent_section', // Callback function.
 		$page                                      // Settings Page.
 	);
 
-	// Get the Altis Consent settings and loop through them, registering each.
+	// Get the Ouun Consent settings and loop through them, registering each.
 	$fields = get_cookie_consent_settings_fields();
 	foreach ( $fields as $field ) {
 		add_settings_field( $field['id'], $field['title'], $field['callback'], $page, $section );
@@ -285,9 +286,9 @@ function privacy_policy_page_settings() {
 		}
 	}
 
-	$label = $privacy_policy_page_exists ? __( 'Update your Privacy Policy page', 'altis-consent' ) : __( 'Select a Privacy Policy page', 'altis-consent' );
+	$label = $privacy_policy_page_exists ? __( 'Update your Privacy Policy page', 'ouun-consent' ) : __( 'Select a Privacy Policy page', 'ouun-consent' );
 
-	add_settings_field( 'wp_page_for_privacy_policy', $label, __NAMESPACE__ . '\\render_privacy_policy_page_setting', 'altis_privacy', 'privacy_policy' );
+	add_settings_field( 'wp_page_for_privacy_policy', $label, __NAMESPACE__ . '\\render_privacy_policy_page_setting', 'ouun_privacy', 'privacy_policy' );
 }
 
 /**
@@ -299,16 +300,16 @@ function get_privacy_policy_text() {
 	ob_start();
 	?>
 	<p>
-		<?php esc_html_e( 'As a website owner, you may need to follow national or international privacy laws. For example, you may need to create and display a Privacy Policy.', 'altis-consent' ); ?>
-		<?php esc_html_e( 'If you already have a Privacy Policy page, please select it below. If not, please create one.', 'altis-consent' ); ?>
+		<?php esc_html_e( 'As a website owner, you may need to follow national or international privacy laws. For example, you may need to create and display a Privacy Policy.', 'ouun-consent' ); ?>
+		<?php esc_html_e( 'If you already have a Privacy Policy page, please select it below. If not, please create one.', 'ouun-consent' ); ?>
 	</p>
 	<p>
-		<?php esc_html_e( 'The new page will include help and suggestions for your Privacy Policy.', 'altis-consent' ); ?>
-		<?php esc_html_e( 'However, it is your responsibility to use those resources correctly, to provide the information that your Privacy Policy requires, and to keep that information current and accurate.', 'altis-consent' ); ?>
+		<?php esc_html_e( 'The new page will include help and suggestions for your Privacy Policy.', 'ouun-consent' ); ?>
+		<?php esc_html_e( 'However, it is your responsibility to use those resources correctly, to provide the information that your Privacy Policy requires, and to keep that information current and accurate.', 'ouun-consent' ); ?>
 	</p>
 	<p>
-		<?php esc_html_e( 'After your Privacy Policy page is set, we suggest that you edit it.', 'altis-consent' ); ?>
-		<?php esc_html_e( 'We would also suggest reviewing your Privacy Policy from time to time, especially after installing or updating any themes or plugins. There may be changes or new suggested information for you to consider adding to your policy.', 'altis-consent' ); ?>
+		<?php esc_html_e( 'After your Privacy Policy page is set, we suggest that you edit it.', 'ouun-consent' ); ?>
+		<?php esc_html_e( 'We would also suggest reviewing your Privacy Policy from time to time, especially after installing or updating any themes or plugins. There may be changes or new suggested information for you to consider adding to your policy.', 'ouun-consent' ); ?>
 	</p>
 	<?php
 
@@ -319,7 +320,7 @@ function get_privacy_policy_text() {
 	 *
 	 * @var string $privacy_message The message to display above the Privacy Policy page setting.
 	 */
-	return apply_filters( 'altis.consent.privacy_policy_message', $privacy_message );
+	return apply_filters( 'ouun.consent.privacy_policy_message', $privacy_message );
 }
 
 /**
@@ -352,13 +353,13 @@ function validate_privacy_options( $dirty ) {
 	 * @var array $validated An array of validated data.
 	 * @var array $dirty     An array of unvalidated data.
 	 */
-	return apply_filters( 'altis.consent.validate_privacy_options', $validated, $dirty );
+	return apply_filters( 'ouun.consent.validate_privacy_options', $validated, $dirty );
 }
 
 /**
- * Render the Altis Privacy page.
+ * Render the Ouun Privacy page.
  */
-function render_altis_privacy_page() {
+function render_ouun_privacy_page() {
 	?>
 	<div class="wrap">
 		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -366,9 +367,9 @@ function render_altis_privacy_page() {
 			<?php
 
 			settings_fields( 'cookie_consent_options' );
-			do_settings_sections( 'altis_privacy' );
+			do_settings_sections( 'ouun_privacy' );
 			?>
-			<input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Save Privacy Settings', 'altis-consent' ); ?>" />
+			<input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Save Privacy Settings', 'ouun-consent' ); ?>" />
 		</form>
 	</div>
 	<?php
@@ -377,16 +378,16 @@ function render_altis_privacy_page() {
 /**
  * The Cookie Consent section. Nothing is here  yet but it could contain a notice or information about cookie consent policies.
  */
-function altis_consent_section() {}
+function ouun_consent_section() {}
 
 /**
  * The Privacy Policy page section.
  * This just adds a nonce that we can validate against when we intercept the $_POST data to update the privacy policy page setting.
  */
-function altis_privacy_section() {
-	$nonce = wp_create_nonce( 'altis.privacy_policy_page' );
+function ouun_privacy_section() {
+	$nonce = wp_create_nonce( 'ouun.privacy_policy_page' );
 	echo wp_kses_post( get_privacy_policy_text() );
-	echo '<input type="hidden" name="_altis_privacy_policy_page_nonce" value="' . sanitize_text_field( $nonce ) . '" />'; // phpcs:ignore
+	echo '<input type="hidden" name="_ouun_privacy_policy_page_nonce" value="' . sanitize_text_field( $nonce ) . '" />'; // phpcs:ignore
 }
 
 /**
@@ -420,10 +421,10 @@ function render_display_banner() {
 	?>
 	<select name="cookie_consent_options[display_banner]" id="display_banner" value="<?php echo absint( $display_banner ); ?>">
 		<option value="0" <?php selected( $display_banner, 0 ); ?>>
-			<?php esc_html_e( 'Do not display banner', 'altis-consent' ); ?>
+			<?php esc_html_e( 'Do not display banner', 'ouun-consent' ); ?>
 		</option>
 		<option value="1" <?php selected( $display_banner, 1 ); ?>>
-			<?php esc_html_e( 'Display consent banner', 'altis-consent' ); ?>
+			<?php esc_html_e( 'Display consent banner', 'ouun-consent' ); ?>
 		</option>
 	</select>
 	<?php
@@ -437,7 +438,7 @@ function cookie_expiration() {
 	?>
 	<input id="cookie_consent_expiration" name="cookie_consent_options[cookie_expiration]" type="number" value="<?php echo absint( $expiration ); ?>" class="small-text" step="1" />
 	<p class="description">
-		<?php esc_html_e( 'How long, in days, cookies should be stored.', 'altis-consent' ); ?>
+		<?php esc_html_e( 'How long, in days, cookies should be stored.', 'ouun-consent' ); ?>
 	</p>
 	<?php
 }
@@ -458,8 +459,8 @@ function render_banner_options() {
 		<?php } ?>
 	</select>
 	<p class="description">
-		<?php esc_html_e( 'If you would like to display an option to configure each cookie category in the consent banner, select All Cookie Categories.', 'altis-consent' ); ?><br />
-		<?php esc_html_e( 'If you would like to only display an option to accept or deny all non-functional cookies, select Allow/Deny All Cookies.', 'altis-consent' ); ?>
+		<?php esc_html_e( 'If you would like to display an option to configure each cookie category in the consent banner, select All Cookie Categories.', 'ouun-consent' ); ?><br />
+		<?php esc_html_e( 'If you would like to only display an option to accept or deny all non-functional cookies, select Allow/Deny All Cookies.', 'ouun-consent' ); ?>
 	</p>
 	<?php
 }
@@ -475,7 +476,7 @@ function get_default_banner_message() : string {
 	 *
 	 * @var string $default_message The default cookie consent banner message.
 	 */
-	return apply_filters( 'altis.consent.default_banner_message', esc_html__( 'This site uses cookies to provide a better user experience.', 'altis-consent' ) );
+	return apply_filters( 'ouun.consent.default_banner_message', esc_html__( 'This site uses cookies to provide a better user experience.', 'ouun-consent' ) );
 }
 
 /**
@@ -505,7 +506,7 @@ function get_allowed_policy_page_values() : array {
 	 *
 	 * @var array An array of allowed policy page values.
 	 */
-	return apply_filters( 'altis.consent.allowed_policy_page_values', [ 'cookie_policy', 'privacy_policy' ] );
+	return apply_filters( 'ouun.consent.allowed_policy_page_values', [ 'cookie_policy', 'privacy_policy' ] );
 }
 
 /**
@@ -541,16 +542,16 @@ function render_cookie_policy_page() {
 		wp_dropdown_pages( [
 			'id'                => 'policy_page',
 			'name'              => 'cookie_consent_options[policy_page]',
-			'show_option_none'  => '&mdash; ' . esc_html__( 'Select an option', 'altis-consent' ) . ' &mdash;',
+			'show_option_none'  => '&mdash; ' . esc_html__( 'Select an option', 'ouun-consent' ) . ' &mdash;',
 			'option_none_value' => '0',
 			'selected'          => esc_attr( $page_id ),
 			'post_status'       => [ 'draft', 'publish' ],
 		] );
 	} else {
-		esc_html_e( 'There are no pages.', 'altis-consent' );
+		esc_html_e( 'There are no pages.', 'ouun-consent' );
 	}
 
-	render_secondary_button( __( 'Create Cookie Policy Page', 'altis-consent' ), 'cookie_policy' );
+	render_secondary_button( __( 'Create Cookie Policy Page', 'ouun-consent' ), 'cookie_policy' );
 }
 
 /**
@@ -562,16 +563,16 @@ function render_privacy_policy_page_setting() {
 	if ( pages_exist() ) {
 		wp_dropdown_pages( [
 			'name'              => 'wp_page_for_privacy_policy',
-			'show_option_none'  => '&mdash; ' . esc_html__( 'Select an option', 'altis-consent' ) . ' &mdash;',
+			'show_option_none'  => '&mdash; ' . esc_html__( 'Select an option', 'ouun-consent' ) . ' &mdash;',
 			'option_none_value' => '0',
 			'selected'          => $privacy_policy_page_id, // phpcs:ignore
 			'post_status'       => [ 'draft', 'publish' ],
 		] );
 	} else {
-		esc_html_e( 'There are no pages.', 'altis-consent' );
+		esc_html_e( 'There are no pages.', 'ouun-consent' );
 	}
 
-	render_secondary_button( __( 'Create Privacy Policy Page', 'altis-consent' ) );
+	render_secondary_button( __( 'Create Privacy Policy Page', 'ouun-consent' ) );
 }
 
 /**
@@ -580,7 +581,7 @@ function render_privacy_policy_page_setting() {
  * @return bool True if pages exist, false if no pages exist. Checks if there are published or draft pages.
  */
 function pages_exist() : bool {
-	$has_pages = wp_cache_get( 'altis.privacy.has_pages', 'altis' );
+	$has_pages = wp_cache_get( 'ouun.privacy.has_pages', 'ouun' );
 
 	if ( ! $has_pages ) {
 		$has_pages = (bool) get_posts( [
@@ -590,7 +591,7 @@ function pages_exist() : bool {
 		] );
 
 		// Cache the result so we don't need to run another get_posts later.
-		wp_cache_set( 'altis.privacy.has_pages', $has_pages, 'altis' );
+		wp_cache_set( 'ouun.privacy.has_pages', $has_pages, 'ouun' );
 	}
 
 	return $has_pages;

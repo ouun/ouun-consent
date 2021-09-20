@@ -2,18 +2,18 @@
 /**
  * Consent banner
  *
- * @package Altis-Consent
+ * @package Ouun-Consent
  */
 
-use Altis\Consent;
-use Altis\Consent\Settings;
+use Ouun\Consent;
+use Ouun\Consent\Settings;
 
 $categories              = Consent\consent_categories();
 $banner_option           = Settings\get_consent_option( 'banner_options' );
 $no_option_saved_message = sprintf(
 	// Translators: %s is the link to the admin Privacy setting page.
-	__( 'No consent option has been set. Please visit the <a href="%s">Privacy Settings page</a> and set the consent banner option.', 'altis-consent.' ),
-	admin_url( 'options-general.php?page=altis_privacy' )
+	__( 'No consent option has been set. Please visit the <a href="%s">Privacy Settings page</a> and set the consent banner option.', 'ouun-consent.' ),
+	admin_url( 'options-general.php?page=ouun_privacy' )
 );
 ?>
 
@@ -24,7 +24,7 @@ $no_option_saved_message = sprintf(
 	 *
 	 * @var string The path to the consent updated template.
 	 */
-	$consent_updated_template_path = apply_filters( 'altis.consent.consent_updated_template_path', __DIR__ . '/consent-updated.php' );
+	$consent_updated_template_path = apply_filters( 'ouun.consent.consent_updated_template_path', __DIR__ . '/consent-updated.php' );
 
 	load_template( $consent_updated_template_path );
 	?>
@@ -37,7 +37,7 @@ $no_option_saved_message = sprintf(
 				 *
 				 * @var string $no_option_saved_message The message to output when no consent option has been saved.
 				 */
-				apply_filters( 'altis.consent.no_option_saved_message', $no_option_saved_message )
+				apply_filters( 'ouun.consent.no_option_saved_message', $no_option_saved_message )
 			);
 		} else {
 			if ( 'none' !== $banner_option ) {
@@ -46,7 +46,7 @@ $no_option_saved_message = sprintf(
 				 *
 				 * @var string The path to the cookie preferences template.
 				 */
-				$cookie_preferences_template_path = apply_filters( 'altis.consent.cookie_preferences_template_path', __DIR__ . '/cookie-preferences.php' );
+				$cookie_preferences_template_path = apply_filters( 'ouun.consent.cookie_preferences_template_path', __DIR__ . '/cookie-preferences.php' );
 
 				load_template( $cookie_preferences_template_path );
 			}
@@ -56,7 +56,7 @@ $no_option_saved_message = sprintf(
 			 *
 			 * @var string The path to the button row template.
 			 */
-			$button_row_template_path = apply_filters( 'altis.consent.button_row_template_path', __DIR__ . '/button-row.php' );
+			$button_row_template_path = apply_filters( 'ouun.consent.button_row_template_path', __DIR__ . '/button-row.php' );
 
 			load_template( $button_row_template_path );
 		}

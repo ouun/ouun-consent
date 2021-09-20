@@ -1,15 +1,16 @@
 <?php
 /**
- * Altis Consent
+ * Ouun Consent
  *
- * The main namespace for the Altis Consent module.
+ * The main namespace for the Ouun Consent module.
+ * Forked from humanmade/altis-consent
  *
- * @package altis/consent
+ * @package ouun/consent
  */
 
-namespace Altis\Consent;
+namespace Ouun\Consent;
 
-use Altis;
+use Ouun;
 
 /**
  * Kick everything off.
@@ -24,15 +25,15 @@ function bootstrap() {
 	// Register this plugin with the consent API.
 	add_filter( 'wp_consent_api_registered_' . plugin_basename( __FILE__ ), '__return_true' );
 
-	// Default Altis consent type to "opt-in".
+	// Default Ouun consent type to "opt-in".
 	add_filter( 'wp_get_consent_type', function() {
 		return 'optin';
 	} );
 
-	// Define the consent types. This is filterable using altis.consent.types.
+	// Define the consent types. This is filterable using ouun.consent.types.
 	add_filter( 'wp_consent_types', __NAMESPACE__ . '\\consent_types' );
 
-	// Set the cookie prefix to the one we define. This is filterable using altis.consent.cookie_prefix.
+	// Set the cookie prefix to the one we define. This is filterable using ouun.consent.cookie_prefix.
 	add_filter( 'wp_consent_cookie_prefix', __NAMESPACE__ . '\\cookie_prefix' );
 
 	// Check the admin setting to determine if we need to load the banner html and js.
@@ -50,7 +51,7 @@ function enqueue_assets() {
 	$css = plugin_dir_url( __DIR__ ) . 'dist/css/styles.css';
 	$ver = '1.0.0';
 
-	if ( Altis\get_environment_type() === 'local' ) {
+	if ( !Ouun\is_local() ) {
 		// If working locally, load the unminified version of the js file.
 		$js = plugin_dir_url( __DIR__ ) . 'assets/js/main.js';
 
@@ -58,16 +59,16 @@ function enqueue_assets() {
 		$ver .= '-' . filemtime( plugin_dir_path( __DIR__ ) . 'dist/css/styles.css' );
 	}
 
-	wp_enqueue_script( 'altis-consent', $js, [ 'altis-consent-api' ], $ver, true );
-	wp_enqueue_style( 'altis-consent', $css, [], $ver, 'screen' );
+	wp_enqueue_script( 'ouun-consent', $js, [ 'ouun-consent-api' ], $ver, true );
+	wp_enqueue_style( 'ouun-consent', $css, [], $ver, 'screen' );
 
-	wp_localize_script( 'altis-consent', 'altisConsent', [
+	wp_localize_script( 'ouun-consent', 'ouunConsent', [
 		/**
 		 * Allow the array of categories that are always consented to be filtered.
 		 *
 		 * @var array An array of default categories to consent to automatically.
 		 */
-		'alwaysAllowCategories' => apply_filters( 'altis.consent.always_allow_categories', [ 'functional', 'statistics-anonymous' ] ),
+		'alwaysAllowCategories' => apply_filters( 'ouun.consent.always_allow_categories', [ 'functional', 'statistics-anonymous' ] ),
 		'cookiePrefix' => cookie_prefix(),
 		'types' => consent_types(),
 		'categories' => consent_categories(),

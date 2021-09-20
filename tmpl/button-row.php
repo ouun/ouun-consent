@@ -2,10 +2,10 @@
 /**
  * Button row
  *
- * @package Altis-Consent
+ * @package Ouun-Consent
  */
 
-use Altis\Consent\Settings;
+use Ouun\Consent\Settings;
 
 /**
  * Get the consent options and set some specific default values.
@@ -31,7 +31,7 @@ $all_categories = $options['banner_options'] === 'all-categories';
 				 *
 				 * @var string The path to the cookie consent policy template.
 				 */
-				$cookie_consent_policy_path = apply_filters( 'altis.consent.cookie_consent_policy_template_path', __DIR__ . '/cookie-consent-policy.php' );
+				$cookie_consent_policy_path = apply_filters( 'ouun.consent.cookie_consent_policy_template_path', __DIR__ . '/cookie-consent-policy.php' );
 
 				load_template( $cookie_consent_policy_path );
 			?>
@@ -39,16 +39,16 @@ $all_categories = $options['banner_options'] === 'all-categories';
 	</div>
 
 	<button class="give-consent">
-		<?php echo esc_html( apply_filters( 'altis.consent.accept_all_cookies_button_text', __( 'Accept all cookies', 'altis-consent' ) ) ); ?>
+		<?php echo esc_html( apply_filters( 'ouun.consent.accept_all_cookies_button_text', __( 'Accept all cookies', 'ouun-consent' ) ) ); ?>
 	</button>
 
 	<button class="revoke-consent">
-		<?php echo esc_html( apply_filters( 'altis.consent.accept_only_functional_cookies_button_text', __( 'Accept only functional cookies', 'altis-consent' ) ) ); ?>
+		<?php echo esc_html( apply_filters( 'ouun.consent.accept_only_functional_cookies_button_text', __( 'Accept only functional cookies', 'ouun-consent' ) ) ); ?>
 	</button>
 
 	<?php if ( $all_categories ) : ?>
 		<button class="view-preferences">
-			<?php echo esc_html( apply_filters( 'altis.consent.cookie_preferences_button_text', __( 'Cookie preferences', 'altis-consent' ) ) ); ?>
+			<?php echo esc_html( apply_filters( 'ouun.consent.cookie_preferences_button_text', __( 'Cookie preferences', 'ouun-consent' ) ) ); ?>
 		</button>
 	<?php endif; ?>
 </div>

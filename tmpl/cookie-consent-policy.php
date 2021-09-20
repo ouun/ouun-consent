@@ -2,10 +2,10 @@
 /**
  * Cookie consent policy
  *
- * @package Altis-Consent
+ * @package Ouun-Consent
  */
 
-use Altis\Consent;
+use Ouun\Consent;
 ?>
 
 <div class="cookie-consent-policy">
@@ -17,7 +17,7 @@ use Altis\Consent;
 			 *
 			 * @var string $consent_policy_link_text The link text for the cookie consent policy.
 			 */
-			apply_filters( 'altis.consent.cookie_consent_policy_link_text', esc_html__( 'Read our cookie policy', 'altis-consent' ) )
+			apply_filters( 'ouun.consent.cookie_consent_policy_link_text', esc_html__( 'Read our cookie policy', 'ouun-consent' ) )
 		);
 		?>
 	</a>
