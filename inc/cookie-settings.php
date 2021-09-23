@@ -45,7 +45,7 @@ function bootstrap() {
                     'new_lines'     => 'wpautop',
                     'rows'          => '5',
                 ])
-                ->addRepeater('cookies_' . $category, [
+                ->addRepeater('category_' . $category, [
                     'label'         => '',
                     'button_label'  => __('Add Cookie', 'ouun-consent'),
                     'layout'        => 'block'
@@ -158,7 +158,7 @@ function bootstrap() {
      * Prefill Default Cookies
      */
     foreach (consent_categories() as $category => $label) {
-        add_filter('acf/load_value/name=cookies_' . $category, function ($cookies, $post_id, $field) use ($category) {
+        add_filter('acf/load_value/name=category_' . $category, function ($cookies, $post_id, $field) use ($category) {
             // Only add defaults when empty.
             if ( ! is_array($cookies) ) {
                 $cookies = [];
@@ -180,6 +180,97 @@ function bootstrap() {
             return $cookies;
         }, 10, 3);
     }
+
+    /**
+     * Shortcode to display Cookies Table
+     */
+    add_shortcode( 'cookies', function ($attributes) {
+        $attributes = shortcode_atts(
+            [
+                'category' => '',
+            ],
+            $attributes,
+            'cookies'
+        );
+
+        return get_cookies_table($attributes['category'] ?? '');
+    });
+}
+
+/**
+ * Get Cookies in Table Markup
+ *
+ * @param string $category
+ * @return string
+ */
+function get_cookies_table(string $category = ''): string
+{
+    $cookies = get_cookies($category);
+
+    $rows = [
+        'name' => 'Name',
+        'domain' => 'Domain',
+        'expires' => 'Expires',
+        'description' => 'Description'
+    ];
+
+    ob_start();
+
+    if($cookies) {
+        ?>
+        <table>
+            <thead>
+            <tr>
+                <?php foreach ($rows as $label) { ?>
+                    <th><?php echo $label; ?></th>
+                <?php } ?>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($cookies as $cookie) { ?>
+                <tr>
+                    <?php foreach ($rows as $key => $label) { ?>
+                        <td><?php echo $cookie['cookie'][$key] ?? ''; ?></td>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+        <?php
+    }
+
+    $table = ob_get_clean();
+
+    return apply_filters("ouun.consent.default_cookies_table_" . $category, $table);
+}
+
+/**
+ * Get Cookies from DB
+ *
+ * @param string $category
+ * @return array|bool
+ */
+function get_cookies(string $category = '')
+{
+    $cookies_array = [];
+
+    if (!empty($category)) {
+        $cookies_array = get_field('field_cookies_category_' . $category);
+    } else {
+        foreach (array_keys(consent_categories()) as $category) {
+            if ($field = get_field('field_cookies_category_' . $category)) {
+                $cookies_array = array_merge($cookies_array, $field);
+            }
+        }
+    }
+
+    if ( $cookies_array ) {
+        foreach( $cookies_array as $cookie ) {
+            $cookies_array[] = $cookie;
+        }
+    }
+
+    return $cookies_array;
 }
 
 /**

@@ -49,34 +49,34 @@ function get_default_content( bool $blocks = true ) : string {
 	$site_name = $site->site_name;
 	$domain    = $site->domain;
 
+	$strings[] = '<p><i>' . sprintf(_x('This Cookie Policy was last updated on %s and applies to citizens and legal permanent residents of the European Economic Area.', 'Legal document cookie policy', 'ouun-consent'), '[publish_date]') . '</i></p>';
 	$strings[] = '<h2>' . __( 'Introduction', 'ouun-consent' ) . '</h2>';
 	// Translators: %s is the current site name.
 	$strings[] = '<p>' . sprintf( __( 'Our website, %s (hereinafter: "the website") uses cookies and other related technologies (for convenience all technologies are referred to as "cookies"). Cookies are also placed by third parties we have engaged. In the document below we inform you about the use of cookies on our website.', 'ouun-consent' ), $site_name ) . '</p>';
-	$strings[] = '<h3>' . __( 'What are cookies?', 'ouun-consent' ) . '</h3>';
+
+    $strings[] = '<h3>' . __( 'What are cookies?', 'ouun-consent' ) . '</h3>';
 	$strings[] = '<p>' . __( 'A cookie is a small simple file that is sent along with pages of this website and stored by your browser on the hard drive of your computer or another device. The information stored therein may be returned to our servers or to the servers of the relevant third parties during a subsequent visit.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h3>' . __( 'What are scripts?', 'ouun-consent' ) . '</h3>';
+
+    $strings[] = '<h3>' . __( 'What are scripts?', 'ouun-consent' ) . '</h3>';
 	$strings[] = '<p>' . __( 'A script is a piece of program code that is used to make our website function properly and interactively. This code is executed on our server or on your device.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h2>' . __( 'Consent', 'ouun-consent' ) . '</h2>';
+
+
+    $strings[] = '<h2>' . __( 'Consent', 'ouun-consent' ) . '</h2>';
 	$strings[] = '<p>' . __( 'When you visit our website for the first time, we will show you a pop-up with an explanation about cookies. As soon as you click the button to accept cookies, you consent to us using all cookies and plug-ins as described in the pop-up and this Cookie Policy. You can disable the use of cookies via your browser, but please note that our website may no longer work properly.', 'ouun-consent' ) . '</p>';
 
-    $strings[] = '<h3>' . __( 'Technical or functional cookies', 'ouun-consent' ) . '</h3>';
-    foreach (get_cookie_category_description('functional') as $string) {
-        array_push($strings, $string);
-    }
-
-    $strings[] = '<h3>' . __( 'Analytical cookies', 'ouun-consent' ) . '</h3>';
-    foreach (get_cookie_category_description('statistics') as $string) {
-        array_push($strings, $string);
-    }
-
-	$strings[] = '<h3>' . __( 'Advertising cookies', 'ouun-consent' ) . '</h3>';
-    foreach (get_cookie_category_description('marketing') as $string) {
-        array_push($strings, $string);
+    foreach (consent_categories() as $category => $label) {
+        $strings[] = '<h3>' . sprintf( __( '%1$s Cookies', 'ouun-consent' ), $label ) . '</h3>';
+        foreach (get_cookie_category_description($category) as $string) {
+            array_push($strings, $string);
+        }
+        $strings[] = '[cookies category="' . $category . '"]';
     }
 
     $strings[] = '<h3>' . __( 'Social media buttons', 'ouun-consent' ) . '</h3>';
     $strings[] = '<p>' . __( 'On our website there may be buttons for social media sites to promote webpages (e.g. “like”, “pin”) or share (e.g. “tweet”) on social networks. These buttons work using pieces of code coming from those social networks themselves. This code places cookies. These social media buttons also can store and process certain information, so a personalized advertisement can be shown to you.', 'ouun-consent' ) . '</p>';
     $strings[] = '<p>' . __( 'Please read the privacy statement of these social networks (which can change regularly) to read what they do with your (personal) data which they process using these cookies. The data that is retrieved is anonymized as much as possible.', 'ouun-consent' ) . '</p>';
+
+
     $strings[] = '<h2>' . __( 'Your rights with respect to personal data', 'ouun-consent' ) . '</h2>';
 	$strings[] = '<ul>' .
 		'<li>' . __( 'You have the right to know why your personal data is needed, what will happen to it, and how long it will be retained for.', 'ouun-consent' ) . '</li>' .
@@ -87,12 +87,16 @@ function get_default_content( bool $blocks = true ) : string {
 		'<li>' . __( 'Right to object: you may object to the processing of your data. We comply with this, unless there are justified grounds for processing.', 'ouun-consent' ) . '</li>' .
 	'</ul>';
 	$strings[] = '<p>' . __( 'To exercise these rights, please contact us. Please refer to the contact details at the bottom of this Cookie Policy. If you have a complaint about how we handle your data, we would like to hear from you, but you also have the right to submit a complaint to the supervisory authority (the Data Protection Authority).', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h3>' . __( 'Enabling, disabling and deleting cookies', 'ouun-consent' ) . '</h3>';
+
+    $strings[] = '<h3>' . __( 'Enabling, disabling and deleting cookies', 'ouun-consent' ) . '</h3>';
 	$strings[] = '<p>' . __( 'You can use your internet browser to automatically or manually delete cookies. You can also specify that certain cookies may not be placed. Another option is to change the settings of your internet browser so that you receive a message each time a cookie is placed. For more information about these options, please refer to the instructions in the Help section of your browser.', 'ouun-consent' ) . '</p>';
 	$strings[] = '<p>' . __( 'Please note that our website may not work properly if all cookies are disabled. If you do delete the cookies in your browser, they will be placed again after your consent when you visit our websites again.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h2>' . __( 'Contact details', 'ouun-consent' ) . '</h2>';
+
+
+    $strings[] = '<h2>' . __( 'Contact details', 'ouun-consent' ) . '</h2>';
 	$strings[] = '<p>' . __( 'For questions and/or comments about our Cookie Policy and this statement, please contact us by using the following contact details:', 'ouun-consent' ) . '</p>';
-	$strings[] = '<address>' . __( '[Organization Name]', 'ouun-consent' ) . '<br />' .
+
+    $strings[] = '<address>' . __( '[Organization Name]', 'ouun-consent' ) . '<br />' .
 		__( '[Company Address]', 'ouun-consent' ) . '<br />' .
 		__( '[Company Country]', 'ouun-consent' ) . '<br />' .
 		// Translators: %s is the current website domain.
@@ -130,6 +134,11 @@ function get_default_content( bool $blocks = true ) : string {
 				$strings[ $key ] = '<!-- wp:list -->' . $string . '<!-- /wp:list -->';
 				$strings[ $key ] .= "\n";
 			}
+
+            if ( strpos( $string, '[cookies' ) === 0 ) {
+                $strings[ $key ] = '<!-- wp:shortcode -->' . $string . '<!-- /wp:shortcode -->';
+                $strings[ $key ] .= "\n";
+            }
 
 			if ( strpos( $string, '<address>' ) === 0 ) {
 				$strings[ $key ] = '<!-- wp:html -->' . $string . '<!-- /wp:html -->';
