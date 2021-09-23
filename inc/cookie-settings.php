@@ -230,7 +230,7 @@ function get_cookies_table(string $category = ''): string
             <?php foreach ($cookies as $cookie) { ?>
                 <tr>
                     <?php foreach ($rows as $key => $label) { ?>
-                        <td><?php echo $cookie['cookie'][$key] ?? ''; ?></td>
+                        <td><?php echo $cookie[$key] ?? ''; ?></td>
                     <?php } ?>
                 </tr>
             <?php } ?>
@@ -252,6 +252,7 @@ function get_cookies_table(string $category = ''): string
  */
 function get_cookies(string $category = '')
 {
+    $cookies = [];
     $cookies_array = [];
 
     if (!empty($category)) {
@@ -266,11 +267,11 @@ function get_cookies(string $category = '')
 
     if ( $cookies_array ) {
         foreach( $cookies_array as $cookie ) {
-            $cookies_array[] = $cookie;
+            $cookies[] = $cookie['cookie'];
         }
     }
-
-    return $cookies_array;
+    
+    return $cookies;
 }
 
 /**
