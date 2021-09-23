@@ -21,3 +21,8 @@ require_once __DIR__ . '/inc/settings.php';
 
 bootstrap();
 Settings\bootstrap();
+
+if ( function_exists('acf_add_options_page') ) {
+    require_once __DIR__ . '/inc/cookie-settings.php';
+    CookieSettings\bootstrap();
+}

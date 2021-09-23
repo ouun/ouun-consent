@@ -8,6 +8,30 @@
 
 namespace Ouun\Consent\CookiePolicy;
 
+use function Ouun\Consent\consent_categories;
+
+function get_cookie_category_description($category) : array {
+    $strings = [];
+    $site      = get_current_site();
+    $site_name = $site->site_name;
+
+    if (!in_array($category, array_keys(consent_categories()))) {
+        return apply_filters( "ouun.consent.cookie_policy_content_$category", $strings );
+    }
+
+    $strings['functional'][] = '<p>' . __( 'Some cookies ensure that certain parts of the website work properly and that your user preferences remain known. By placing functional cookies, we make it easier for you to visit our website. This way, you do not need to repeatedly enter the same information when visiting our website and, for example, the items remain in your shopping cart until you have paid. We may place these cookies without your consent.', 'ouun-consent' ) . '</p>';
+
+    $strings['statistics'][] = '<p>' . __( 'We use analytical cookies to optimize the website experience for our users. With these analytical cookies we get insights in the usage of our website.', 'ouun-consent' ) .
+        '&nbsp;' . __( 'Some of these statistics are tracked anonymously. No permission is asked to place these analytical cookies.', 'ouun-consent' ) .
+        '&nbsp;' . __( 'For all others, we ask your permission to place analytical cookies.', 'ouun-consent' ) . '</p>';
+
+    // Translators: %s is the current site name.
+    $strings['marketing'][] = '<p>' . sprintf( __( 'On this website we may use tracking cookies, enabling us to gain insights into the campaign results. This happens based on a profile we create based on your behavior on %s. With these cookies you, as website visitor are linked to a unique ID, but will not profile your behavior and interests to serve personalized ads.', 'ouun-consent' ), $site_name ) . '</p>';
+    $strings['marketing'][] = '<p>' . __( 'Because these cookies are marked as tracking cookies, we ask your permission to place these.', 'ouun-consent' ) . '</p>';
+
+    return apply_filters( "ouun.consent.cookie_policy_content_$category", key_exists($category, $strings) ? $strings[$category] : [] );
+}
+
 /**
  * Return the default cookie policy content.
  *
@@ -20,7 +44,6 @@ namespace Ouun\Consent\CookiePolicy;
  * @return string      The cookie policy content.
  */
 function get_default_content( bool $blocks = true ) : string {
-	$content   = '';
 	$strings   = [];
 	$site      = get_current_site();
 	$site_name = $site->site_name;
@@ -35,20 +58,26 @@ function get_default_content( bool $blocks = true ) : string {
 	$strings[] = '<p>' . __( 'A script is a piece of program code that is used to make our website function properly and interactively. This code is executed on our server or on your device.', 'ouun-consent' ) . '</p>';
 	$strings[] = '<h2>' . __( 'Consent', 'ouun-consent' ) . '</h2>';
 	$strings[] = '<p>' . __( 'When you visit our website for the first time, we will show you a pop-up with an explanation about cookies. As soon as you click the button to accept cookies, you consent to us using all cookies and plug-ins as described in the pop-up and this Cookie Policy. You can disable the use of cookies via your browser, but please note that our website may no longer work properly.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h3>' . __( 'Technical or functional cookies', 'ouun-consent' ) . '</h3>';
-	$strings[] = '<p>' . __( 'Some cookies ensure that certain parts of the website work properly and that your user preferences remain known. By placing functional cookies, we make it easier for you to visit our website. This way, you do not need to repeatedly enter the same information when visiting our website and, for example, the items remain in your shopping cart until you have paid. We may place these cookies without your consent.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h3>' . __( 'Analytical cookies', 'ouun-consent' ) . '</h3>';
-	$strings[] = '<p>' . __( 'We use analytical cookies to optimize the website experience for our users. With these analytical cookies we get insights in the usage of our website.', 'ouun-consent' ) .
-		'&nbsp;' . __( 'Some of these statistics are tracked anonymously. No permission is asked to place these analytical cookies.', 'ouun-consent' ) .
-		'&nbsp;' . __( 'For all others, we ask your permission to place analytical cookies.', 'ouun-consent' ) . '</p>';
+
+    $strings[] = '<h3>' . __( 'Technical or functional cookies', 'ouun-consent' ) . '</h3>';
+    foreach (get_cookie_category_description('functional') as $string) {
+        array_push($strings, $string);
+    }
+
+    $strings[] = '<h3>' . __( 'Analytical cookies', 'ouun-consent' ) . '</h3>';
+    foreach (get_cookie_category_description('statistics') as $string) {
+        array_push($strings, $string);
+    }
+
 	$strings[] = '<h3>' . __( 'Advertising cookies', 'ouun-consent' ) . '</h3>';
-	// Translators: %s is the current site name.
-	$strings[] = '<p>' . sprintf( __( 'On this website we may use tracking cookies, enabling us to gain insights into the campaign results. This happens based on a profile we create based on your behavior on %s. With these cookies you, as website visitor are linked to a unique ID, but will not profile your behavior and interests to serve personalized ads.', 'ouun-consent' ), $site_name ) . '</p>';
-	$strings[] = '<p>' . __( 'Because these cookies are marked as tracking cookies, we ask your permission to place these.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h3>' . __( 'Social media buttons', 'ouun-consent' ) . '</h3>';
-	$strings[] = '<p>' . __( 'On our website there may be buttons for social media sites to promote webpages (e.g. “like”, “pin”) or share (e.g. “tweet”) on social networks. These buttons work using pieces of code coming from those social networks themselves. This code places cookies. These social media buttons also can store and process certain information, so a personalized advertisement can be shown to you.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<p>' . __( 'Please read the privacy statement of these social networks (which can change regularly) to read what they do with your (personal) data which they process using these cookies. The data that is retrieved is anonymized as much as possible.', 'ouun-consent' ) . '</p>';
-	$strings[] = '<h2>' . __( 'Your rights with respect to personal data', 'ouun-consent' ) . '</h2>';
+    foreach (get_cookie_category_description('marketing') as $string) {
+        array_push($strings, $string);
+    }
+
+    $strings[] = '<h3>' . __( 'Social media buttons', 'ouun-consent' ) . '</h3>';
+    $strings[] = '<p>' . __( 'On our website there may be buttons for social media sites to promote webpages (e.g. “like”, “pin”) or share (e.g. “tweet”) on social networks. These buttons work using pieces of code coming from those social networks themselves. This code places cookies. These social media buttons also can store and process certain information, so a personalized advertisement can be shown to you.', 'ouun-consent' ) . '</p>';
+    $strings[] = '<p>' . __( 'Please read the privacy statement of these social networks (which can change regularly) to read what they do with your (personal) data which they process using these cookies. The data that is retrieved is anonymized as much as possible.', 'ouun-consent' ) . '</p>';
+    $strings[] = '<h2>' . __( 'Your rights with respect to personal data', 'ouun-consent' ) . '</h2>';
 	$strings[] = '<ul>' .
 		'<li>' . __( 'You have the right to know why your personal data is needed, what will happen to it, and how long it will be retained for.', 'ouun-consent' ) . '</li>' .
 		'<li>' . __( 'Right of access: You have the right to access your personal data that is known to us.', 'ouun-consent' ) . '</li>' .

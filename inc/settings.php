@@ -26,15 +26,29 @@ function bootstrap() {
     add_filter(
         'admin_body_class',
         function( $body_class ) {
-            $current_screen = get_current_screen();
-
-            if ( isset( $current_screen->base ) && 'settings_page_ouun_privacy' === $current_screen->base ) {
+            if ( is_ouun_privacy_page() ) {
                 $body_class .= ' privacy-settings ';
             }
 
             return $body_class;
         }
     );
+}
+
+/**
+ * Check if current page is Privacy Page
+ *
+ * @param string $page
+ * @return bool
+ */
+function is_ouun_privacy_page(string $page = '') : bool {
+    $current_screen = get_current_screen();
+
+    if (!empty($page)) {
+        return isset( $current_screen->base ) && $current_screen->base === $page;
+    }
+
+    return isset( $current_screen->base ) && strpos($current_screen->base, 'settings_page_ouun_privacy') === 0;
 }
 
 /**
@@ -381,36 +395,41 @@ function validate_privacy_options( $dirty ) {
 }
 
 /**
+ * Render the Ouun Privacy page header.
+ */
+function render_ouun_privacy_page_header() {
+    $active_class = 'class="privacy-settings-tab active" aria-current="true"';
+    $class = 'class="privacy-settings-tab"';
+	?>
+        <div class="privacy-settings-header">
+            <div class="privacy-settings-title-section">
+                <h1>
+                    <?php _e( 'Privacy' ); ?>
+                </h1>
+            </div>
+
+            <nav class="privacy-settings-tabs-wrapper" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
+                <a href="<?php echo esc_url( admin_url( 'options-privacy.php' ) ); ?>" <?php echo is_ouun_privacy_page('settings_page_ouun_privacy') ? $active_class : $class; ?>>
+                    <?php
+                    /* translators: Tab heading for Site Health Status page. */
+                    _ex( 'Settings', 'Privacy Settings' );
+                    ?>
+                </a>
+
+                <?php do_action('ouun.consent.settings_header_tabs'); ?>
+            </nav>
+        </div>
+
+        <hr class="wp-header-end">
+    <?php
+}
+
+/**
  * Render the Ouun Privacy page.
  */
 function render_ouun_privacy_page() {
+    render_ouun_privacy_page_header();
 	?>
-    <div class="privacy-settings-header">
-        <div class="privacy-settings-title-section">
-            <h1>
-                <?php _e( 'Privacy' ); ?>
-            </h1>
-        </div>
-
-        <nav class="privacy-settings-tabs-wrapper hide-if-no-js" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
-            <a href="<?php echo esc_url( admin_url( 'options-privacy.php' ) ); ?>" class="privacy-settings-tab active" aria-current="true">
-                <?php
-                /* translators: Tab heading for Site Health Status page. */
-                _ex( 'Settings', 'Privacy Settings' );
-                ?>
-            </a>
-
-            <a href="<?php echo esc_url( admin_url( 'options-privacy.php?tab=policyguide' ) ); ?>" class="privacy-settings-tab">
-                <?php
-                /* translators: Tab heading for Site Health Status page. */
-                _ex( 'Policy Guide', 'Privacy Settings' );
-                ?>
-            </a>
-        </nav>
-    </div>
-
-    <hr class="wp-header-end">
-
     <div class="privacy-settings-body hide-if-no-js">
         <div class="wrap">
             <form action="options.php" method="post">
@@ -486,7 +505,7 @@ function render_display_banner() {
  * Render the cookie expiration setting.
  */
 function cookie_expiration() {
-	$expiration = get_consent_option( 'cookie_expiration', 30 );
+	$expiration = get_consent_option( 'cookie_expiration', 90 );
 	?>
 	<input id="cookie_consent_expiration" name="cookie_consent_options[cookie_expiration]" type="number" value="<?php echo absint( $expiration ); ?>" class="small-text" step="1" />
 	<p class="description">

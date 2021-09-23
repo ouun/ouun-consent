@@ -12,7 +12,8 @@ $categories = Consent\consent_categories();
 
 <div class="cookie-preferences">
 	<?php
-	foreach ( $categories as $category ) {
+	foreach ( $categories as $category => $label ) {
+
 		// Validate the consent category.
 		if ( ! Consent\validate_consent_item( $category, 'categories' ) ) {
 			continue;
@@ -31,7 +32,7 @@ $categories = Consent\consent_categories();
 				<?php endif; ?>
 				data-consentcategory="<?php echo esc_attr( $category ); ?>"
 			/>
-			<?php echo esc_attr( ucfirst( $category ) ); ?>
+			<?php echo $label; ?>
 		</label>
 	<?php } ?>
 

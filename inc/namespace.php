@@ -76,7 +76,7 @@ function enqueue_assets() {
 		'alwaysAllowCategories' => apply_filters( 'ouun.consent.always_allow_categories', [ 'functional', 'statistics-anonymous' ] ),
 		'cookiePrefix' => cookie_prefix(),
 		'types' => consent_types(),
-		'categories' => consent_categories(),
+		'categories' => array_keys(consent_categories()),
 		'values' => consent_values(),
 		'shouldDisplayBanner' => should_display_banner(),
 	] );

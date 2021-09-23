@@ -53,7 +53,7 @@ function cookie_prefix() : string {
 	 *
 	 * @param string $prefix The consent cookie prefix.
 	 */
-	return apply_filters( 'ouun.consent.cookie_prefix', '_ouun_consent' );
+	return apply_filters( 'ouun.consent.cookie_prefix', '_cookies_consent' );
 }
 
 /**
@@ -87,11 +87,11 @@ function consent_categories() : array {
 	 * @param array $categories The allowed consent categories.
 	 */
 	return apply_filters( 'ouun.consent.categories', [
-		'functional',
-		'preferences',
-		'statistics',
-		'statistics-anonymous',
-		'marketing',
+		'functional' => __('Functional', 'ouun-consent'),
+		'preferences' => __('Preferences', 'ouun-consent'),
+		'statistics' => __('Statistics', 'ouun-consent'),
+		'statistics-anonymous' => __('Anonymous Statistics', 'ouun-consent'),
+		'marketing' => __('Marketing', 'ouun-consent'),
 	] );
 }
 
@@ -128,7 +128,7 @@ function validate_consent_item( string $item, string $item_type ) {
 
 	// Use a variable function name to check the matching item type.
 	$haystack = __NAMESPACE__ . '\\consent_' . $item_type;
-	if ( in_array( $item, $haystack(), true ) ) {
+	if ( in_array( $item, array_keys($haystack()), true ) ) {
 		return $item;
 	}
 
