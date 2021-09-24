@@ -38,7 +38,7 @@ function bootstrap() {
                 ->addTab($category, [
                     'label' => $label,
                 ])
-                ->addTextarea('description_' . $category, [
+                ->addTextarea('category_description_' . $category, [
                     'label'         => sprintf( __( '%1$s Cookies Description', 'ouun-consent' ), $label ),
                     'placeholder'   => wp_strip_all_tags(implode(' ', get_cookie_category_description($category))),
                     'required'      => 0,
@@ -182,19 +182,63 @@ function bootstrap() {
     }
 
     /**
-     * Shortcode to display Cookies Table
+     * Cookies Shortcode
+     * [cookies table (category="")]
+     * [cookies description category=""]
      */
-    add_shortcode( 'cookies', function ($attributes) {
-        $attributes = shortcode_atts(
-            [
-                'category' => '',
-            ],
-            $attributes,
-            'cookies'
-        );
+    if (!shortcode_exists('cookies')) {
+        add_shortcode( 'cookies', function ($attributes) {
+            $get = $attributes[0] ?? 'table';
 
-        return get_cookies_table($attributes['category'] ?? '');
-    });
+            $attributes = shortcode_atts(
+                [
+                    'category' => '',
+                ],
+                $attributes,
+                'cookies'
+            );
+
+            if($get === 'description' && $attributes['category']) {
+                return get_cookies_category_description($attributes['category']);
+            } else if ($get === 'table') {
+                return get_cookies_table($attributes['category'] ?? '');
+            } else {
+                return '';
+            }
+        });
+    }
+
+    /**
+     * Publishing Date Shortcode
+     */
+    if (!shortcode_exists('publish_date')) {
+        add_shortcode('publish_date', function ($attributes) {
+            $attributes = shortcode_atts(
+                [
+                    'format' => '',
+                    'post_id' => null
+                ],
+                $attributes,
+                'publish_date'
+            );
+
+            return esc_html( get_the_date( '', $attributes['post_id'] ) );
+        });
+    }
+}
+
+/**
+ * Get a Cookies Category Description
+ *
+ * @param string $category
+ * @return string
+ */
+function get_cookies_category_description(string $category): string
+{
+    $field = get_field('category_description_' . $category, 'option');
+    $default = implode(' ', get_cookie_category_description($category));
+
+    return !empty($field) ? $field : $default;
 }
 
 /**
@@ -357,17 +401,26 @@ function render_ouun_cookies_page() {
 }
 
 /**
- * Filter consent category descriptions
+ * Filter consent for dynamic Category Descriptions via Shortcodes
  */
 function overwrite_cookies_categories_description() {
     foreach (consent_categories() as $category => $label) {
         $category_description = get_field('description_' . $category, 'option');
-
         if (!empty($category_description)) {
             add_filter("ouun.consent.cookie_policy_content_$category", function () use ($category_description) {
                 return preg_split('[(<p[^>]*>.*?</p>)]', $category_description, NULL, PREG_SPLIT_DELIM_CAPTURE);
             });
         }
+
+        // Filters the default output e.g. for Policy Page generation
+        add_filter("ouun.consent.cookie_default_policy_content_$category", function () use ($category) {
+            // Replace the content with a shortcode that outputs ACF field text
+            $strings = [];
+            $strings[] = '<p>[cookies description category="' . $category . '"]</p>';
+            $strings[] = '<p>[cookies table category="' . $category . '"]</p>';
+
+            return $strings;
+        });
     }
 }
 

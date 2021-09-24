@@ -66,10 +66,9 @@ function get_default_content( bool $blocks = true ) : string {
 
     foreach (consent_categories() as $category => $label) {
         $strings[] = '<h3>' . sprintf( __( '%1$s Cookies', 'ouun-consent' ), $label ) . '</h3>';
-        foreach (get_cookie_category_description($category) as $string) {
+        foreach (apply_filters( "ouun.consent.cookie_default_policy_content_$category", get_cookie_category_description($category) ) as $string) {
             array_push($strings, $string);
         }
-        $strings[] = '[cookies category="' . $category . '"]';
     }
 
     $strings[] = '<h3>' . __( 'Social media buttons', 'ouun-consent' ) . '</h3>';
@@ -134,11 +133,6 @@ function get_default_content( bool $blocks = true ) : string {
 				$strings[ $key ] = '<!-- wp:list -->' . $string . '<!-- /wp:list -->';
 				$strings[ $key ] .= "\n";
 			}
-
-            if ( strpos( $string, '[cookies' ) === 0 ) {
-                $strings[ $key ] = '<!-- wp:shortcode -->' . $string . '<!-- /wp:shortcode -->';
-                $strings[ $key ] .= "\n";
-            }
 
 			if ( strpos( $string, '<address>' ) === 0 ) {
 				$strings[ $key ] = '<!-- wp:html -->' . $string . '<!-- /wp:html -->';
