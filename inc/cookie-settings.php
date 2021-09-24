@@ -270,7 +270,7 @@ function get_cookies(string $category = '')
             $cookies[] = $cookie['cookie'];
         }
     }
-    
+
     return $cookies;
 }
 
@@ -379,5 +379,5 @@ function overwrite_cookies_categories_description() {
  */
 function get_cookie_domain(string $url = ''): string
 {
-    return preg_replace("(^https?://)", "", empty($url) ? get_home_url() : $url );
+    return parse_url(empty($url) ? get_home_url() : $url, PHP_URL_HOST);
 }
