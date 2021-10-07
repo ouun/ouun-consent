@@ -14,6 +14,7 @@ Ouun.Consent = {
 	revokeConsentButton: document.querySelector( '.revoke-consent' ),
 	cookiePreferences: document.querySelector( '.cookie-preferences' )?.classList || false,
 	cookiePrefsButton: document.querySelector( '.view-preferences' ),
+	cookiePrefsCloseButton: document.querySelector( '.close-preferences' ),
 	applyCookiePrefs: document.querySelector( '.apply-cookie-preferences' ),
 	cookieUpdatedMessage: document.querySelector( '.consent-updated-message' ).classList,
 	closeUpdatedMessage: document.getElementById( 'consent-close-updated-message' ),
@@ -224,6 +225,8 @@ Ouun.Consent.revokeConsentButton.addEventListener( 'click', Ouun.Consent.updateC
 if ( Ouun.Consent.cookiePrefsButton ) {
 	Ouun.Consent.cookiePrefsButton.addEventListener( 'click', Ouun.Consent.toggleCookiePrefs );
 	Ouun.Consent.applyCookiePrefs.addEventListener( 'click', Ouun.Consent.updateCategories );
+
+	Ouun.Consent.cookiePrefsCloseButton.addEventListener( 'click', Ouun.Consent.toggleCookiePrefs );
 }
 
 // Close the banner if the close button is clicked.
