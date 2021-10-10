@@ -192,14 +192,15 @@ Ouun.Consent.toggleCookiePrefs = function () {
 /**
  * Check if consent has been given already. If not, toggle display of the banner.
  */
-Ouun.Consent.maybeDisplayBanner = function () {
-	if (
+Ouun.Consent.maybeDisplayBanner = function ( forceDisplay = false ) {
+	if ( (
 		// A consent cookie has not been saved...
 		! Ouun.Consent.cookieSaved() &&
 		// We're not hiding the banner in the settings...
 		ouunConsent.shouldDisplayBanner &&
 		// & the banner markup exists.
 		Ouun.Consent.consentBanner
+	) || forceDisplay
 	) {
 		// Display the consent banner.
 		Ouun.Consent.consentBanner.style.display = 'block';
