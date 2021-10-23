@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Ouun Consent\n"
-"POT-Creation-Date: 2021-09-20 16:03+0200\n"
+"POT-Creation-Date: 2021-10-23 15:29+0200\n"
 "PO-Revision-Date: 2021-09-20 16:02+0200\n"
 "Last-Translator: Philipp Wellmer <philipp@ouun.io>\n"
 "Language-Team: Philipp Wellmer <philipp@ouun.io>\n"
@@ -23,61 +23,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: inc/cookie-policy.php:29
-msgid "Introduction"
-msgstr ""
-
-#: inc/cookie-policy.php:31
-#, php-format
-msgid ""
-"Our website, %s (hereinafter: \"the website\") uses cookies and other "
-"related technologies (for convenience all technologies are referred to as "
-"\"cookies\"). Cookies are also placed by third parties we have engaged. In "
-"the document below we inform you about the use of cookies on our website."
-msgstr ""
-
-#: inc/cookie-policy.php:32
-msgid "What are cookies?"
-msgstr ""
-
-#: inc/cookie-policy.php:33
-msgid ""
-"A cookie is a small simple file that is sent along with pages of this "
-"website and stored by your browser on the hard drive of your computer or "
-"another device. The information stored therein may be returned to our "
-"servers or to the servers of the relevant third parties during a subsequent "
-"visit."
-msgstr ""
-
-#: inc/cookie-policy.php:34
-msgid "What are scripts?"
-msgstr ""
-
-#: inc/cookie-policy.php:35
-msgid ""
-"A script is a piece of program code that is used to make our website "
-"function properly and interactively. This code is executed on our server or "
-"on your device."
-msgstr ""
-
-#: inc/cookie-policy.php:36
-msgid "Consent"
-msgstr ""
-
-#: inc/cookie-policy.php:37
-msgid ""
-"When you visit our website for the first time, we will show you a pop-up "
-"with an explanation about cookies. As soon as you click the button to accept "
-"cookies, you consent to us using all cookies and plug-ins as described in "
-"the pop-up and this Cookie Policy. You can disable the use of cookies via "
-"your browser, but please note that our website may no longer work properly."
-msgstr ""
-
-#: inc/cookie-policy.php:38
-msgid "Technical or functional cookies"
-msgstr ""
-
-#: inc/cookie-policy.php:39
+#: inc/cookie-policy.php:22
 msgid ""
 "Some cookies ensure that certain parts of the website work properly and that "
 "your user preferences remain known. By placing functional cookies, we make "
@@ -87,31 +33,23 @@ msgid ""
 "place these cookies without your consent."
 msgstr ""
 
-#: inc/cookie-policy.php:40
-msgid "Analytical cookies"
-msgstr ""
-
-#: inc/cookie-policy.php:41
+#: inc/cookie-policy.php:24
 msgid ""
 "We use analytical cookies to optimize the website experience for our users. "
 "With these analytical cookies we get insights in the usage of our website."
 msgstr ""
 
-#: inc/cookie-policy.php:42
+#: inc/cookie-policy.php:25
 msgid ""
 "Some of these statistics are tracked anonymously. No permission is asked to "
 "place these analytical cookies."
 msgstr ""
 
-#: inc/cookie-policy.php:43
+#: inc/cookie-policy.php:26
 msgid "For all others, we ask your permission to place analytical cookies."
 msgstr ""
 
-#: inc/cookie-policy.php:44
-msgid "Advertising cookies"
-msgstr ""
-
-#: inc/cookie-policy.php:46
+#: inc/cookie-policy.php:29
 #, php-format
 msgid ""
 "On this website we may use tracking cookies, enabling us to gain insights "
@@ -121,17 +59,80 @@ msgid ""
 "serve personalized ads."
 msgstr ""
 
-#: inc/cookie-policy.php:47
+#: inc/cookie-policy.php:30
 msgid ""
 "Because these cookies are marked as tracking cookies, we ask your permission "
 "to place these."
 msgstr ""
 
-#: inc/cookie-policy.php:48
+#: inc/cookie-policy.php:52
+#, php-format
+msgctxt "Legal document cookie policy"
+msgid ""
+"This Cookie Policy was last updated on %s and applies to citizens and legal "
+"permanent residents of the European Economic Area."
+msgstr ""
+
+#: inc/cookie-policy.php:53
+msgid "Introduction"
+msgstr ""
+
+#: inc/cookie-policy.php:55
+#, php-format
+msgid ""
+"Our website, %s (hereinafter: \"the website\") uses cookies and other "
+"related technologies (for convenience all technologies are referred to as "
+"\"cookies\"). Cookies are also placed by third parties we have engaged. In "
+"the document below we inform you about the use of cookies on our website."
+msgstr ""
+
+#: inc/cookie-policy.php:57
+msgid "What are cookies?"
+msgstr ""
+
+#: inc/cookie-policy.php:58
+msgid ""
+"A cookie is a small simple file that is sent along with pages of this "
+"website and stored by your browser on the hard drive of your computer or "
+"another device. The information stored therein may be returned to our "
+"servers or to the servers of the relevant third parties during a subsequent "
+"visit."
+msgstr ""
+
+#: inc/cookie-policy.php:60
+msgid "What are scripts?"
+msgstr ""
+
+#: inc/cookie-policy.php:61
+msgid ""
+"A script is a piece of program code that is used to make our website "
+"function properly and interactively. This code is executed on our server or "
+"on your device."
+msgstr ""
+
+#: inc/cookie-policy.php:64
+msgid "Consent"
+msgstr ""
+
+#: inc/cookie-policy.php:65
+msgid ""
+"When you visit our website for the first time, we will show you a pop-up "
+"with an explanation about cookies. As soon as you click the button to accept "
+"cookies, you consent to us using all cookies and plug-ins as described in "
+"the pop-up and this Cookie Policy. You can disable the use of cookies via "
+"your browser, but please note that our website may no longer work properly."
+msgstr ""
+
+#: inc/cookie-policy.php:68
+#, php-format
+msgid "%1$s Cookies"
+msgstr ""
+
+#: inc/cookie-policy.php:74
 msgid "Social media buttons"
 msgstr ""
 
-#: inc/cookie-policy.php:49
+#: inc/cookie-policy.php:75
 msgid ""
 "On our website there may be buttons for social media sites to promote "
 "webpages (e.g. “like”, “pin”) or share (e.g. “tweet”) on social networks. "
@@ -141,7 +142,7 @@ msgid ""
 "be shown to you."
 msgstr ""
 
-#: inc/cookie-policy.php:50
+#: inc/cookie-policy.php:76
 msgid ""
 "Please read the privacy statement of these social networks (which can change "
 "regularly) to read what they do with your (personal) data which they process "
@@ -149,48 +150,48 @@ msgid ""
 "possible."
 msgstr ""
 
-#: inc/cookie-policy.php:51
+#: inc/cookie-policy.php:79
 msgid "Your rights with respect to personal data"
 msgstr ""
 
-#: inc/cookie-policy.php:53
+#: inc/cookie-policy.php:81
 msgid ""
 "You have the right to know why your personal data is needed, what will "
 "happen to it, and how long it will be retained for."
 msgstr ""
 
-#: inc/cookie-policy.php:54
+#: inc/cookie-policy.php:82
 msgid ""
 "Right of access: You have the right to access your personal data that is "
 "known to us."
 msgstr ""
 
-#: inc/cookie-policy.php:55
+#: inc/cookie-policy.php:83
 msgid ""
 "Right to rectification: you have the right to supplement, correct, have "
 "deleted or blocked your personal data whenever you wish."
 msgstr ""
 
-#: inc/cookie-policy.php:56
+#: inc/cookie-policy.php:84
 msgid ""
 "If you give us your consent to process your data, you have the right to "
 "revoke that consent and to have your personal data deleted."
 msgstr ""
 
-#: inc/cookie-policy.php:57
+#: inc/cookie-policy.php:85
 msgid ""
 "Right to transfer your data: you have the right to request all your personal "
 "data from the controller and transfer it in its entirety to another "
 "controller."
 msgstr ""
 
-#: inc/cookie-policy.php:58
+#: inc/cookie-policy.php:86
 msgid ""
 "Right to object: you may object to the processing of your data. We comply "
 "with this, unless there are justified grounds for processing."
 msgstr ""
 
-#: inc/cookie-policy.php:60
+#: inc/cookie-policy.php:88
 msgid ""
 "To exercise these rights, please contact us. Please refer to the contact "
 "details at the bottom of this Cookie Policy. If you have a complaint about "
@@ -199,11 +200,11 @@ msgid ""
 "Protection Authority)."
 msgstr ""
 
-#: inc/cookie-policy.php:61
+#: inc/cookie-policy.php:90
 msgid "Enabling, disabling and deleting cookies"
 msgstr ""
 
-#: inc/cookie-policy.php:62
+#: inc/cookie-policy.php:91
 msgid ""
 "You can use your internet browser to automatically or manually delete "
 "cookies. You can also specify that certain cookies may not be placed. "
@@ -213,110 +214,196 @@ msgid ""
 "your browser."
 msgstr ""
 
-#: inc/cookie-policy.php:63
+#: inc/cookie-policy.php:92
 msgid ""
 "Please note that our website may not work properly if all cookies are "
 "disabled. If you do delete the cookies in your browser, they will be placed "
 "again after your consent when you visit our websites again."
 msgstr ""
 
-#: inc/cookie-policy.php:64
+#: inc/cookie-policy.php:95
 msgid "Contact details"
 msgstr ""
 
-#: inc/cookie-policy.php:65
+#: inc/cookie-policy.php:96
 msgid ""
 "For questions and/or comments about our Cookie Policy and this statement, "
 "please contact us by using the following contact details:"
 msgstr ""
 
-#: inc/cookie-policy.php:66
+#: inc/cookie-policy.php:98
 msgid "[Organization Name]"
 msgstr ""
 
-#: inc/cookie-policy.php:67
+#: inc/cookie-policy.php:99
 msgid "[Company Address]"
 msgstr ""
 
-#: inc/cookie-policy.php:68
+#: inc/cookie-policy.php:100
 msgid "[Company Country]"
 msgstr ""
 
-#: inc/cookie-policy.php:70
+#: inc/cookie-policy.php:102
 #, php-format
 msgid "Website: %s"
 msgstr ""
 
-#: inc/cookie-policy.php:72
+#: inc/cookie-policy.php:105
 #, php-format
 msgid "Email: %s"
 msgstr ""
 
-#: inc/cookie-policy.php:80
+#: inc/cookie-policy.php:113
 msgid "[Company Telephone]"
 msgstr ""
 
-#: inc/settings.php:131 inc/settings.php:252
+#: inc/cookie-settings.php:21 inc/cookie-settings.php:115
+msgid "Cookies"
+msgstr ""
+
+#: inc/cookie-settings.php:27
+msgid "Update Cookies"
+msgstr ""
+
+#: inc/cookie-settings.php:28
+msgid "Cookies updated"
+msgstr ""
+
+#: inc/cookie-settings.php:32
+#, php-format
+msgid "Cookies on %1$s"
+msgstr ""
+
+#: inc/cookie-settings.php:43
+#, php-format
+msgid "%1$s Cookies Description"
+msgstr ""
+
+#: inc/cookie-settings.php:51
+msgid "Add Cookie"
+msgstr ""
+
+#: inc/cookie-settings.php:58
+msgid "Name"
+msgstr ""
+
+#: inc/cookie-settings.php:59
+msgid "Cookie Name"
+msgstr ""
+
+#: inc/cookie-settings.php:68
+msgid "Domain"
+msgstr ""
+
+#: inc/cookie-settings.php:79
+msgid "Expiration"
+msgstr ""
+
+#: inc/cookie-settings.php:81
+#, php-format
+msgid "e.g. %1$s days"
+msgstr ""
+
+#: inc/cookie-settings.php:90
+msgid "Description"
+msgstr ""
+
+#: inc/cookie-settings.php:114
+msgid "Cookies Settings"
+msgstr ""
+
+#. translators: Tab heading for Cookies page.
+#: inc/cookie-settings.php:149
+msgctxt "Privacy Settings"
+msgid "Cookies"
+msgstr ""
+
+#: inc/cookie-settings.php:386
+#, php-format
+msgid "%1$s days"
+msgstr ""
+
+#: inc/functions.php:96
+msgid "Functional"
+msgstr ""
+
+#: inc/functions.php:97
+msgid "Preferences"
+msgstr ""
+
+#: inc/functions.php:98
+msgid "Statistics"
+msgstr ""
+
+#: inc/functions.php:99
+msgid "Anonymous Statistics"
+msgstr ""
+
+#: inc/functions.php:100
+msgid "Marketing"
+msgstr ""
+
+#: inc/settings.php:152 inc/settings.php:277
 msgid "Privacy Policy"
 msgstr ""
 
-#: inc/settings.php:135
+#: inc/settings.php:156
 msgid "Cookie Policy"
 msgstr ""
 
-#: inc/settings.php:159
+#: inc/settings.php:180
 #, php-format
 msgid "Unable to create a %s page"
 msgstr ""
 
-#: inc/settings.php:175
+#: inc/settings.php:197
 msgid "Privacy Settings"
 msgstr ""
 
-#: inc/settings.php:176 inc/settings.php:391
+#: inc/settings.php:198 inc/settings.php:421
 msgid "Privacy"
 msgstr ""
 
-#: inc/settings.php:190
+#: inc/settings.php:213
 msgid "Display Cookie Consent Banner"
 msgstr ""
 
-#: inc/settings.php:195
+#: inc/settings.php:218
 msgid "Cookie Expiration"
 msgstr ""
 
-#: inc/settings.php:200
+#: inc/settings.php:223
 msgid "Consent Banner Options"
 msgstr ""
 
-#: inc/settings.php:205
+#: inc/settings.php:228
 msgid "Banner Message"
 msgstr ""
 
-#: inc/settings.php:210
+#: inc/settings.php:233
 msgid "Cookie Policy Page"
 msgstr ""
 
-#: inc/settings.php:230
+#: inc/settings.php:254
 msgid "Allow/Deny All Cookies"
 msgstr ""
 
-#: inc/settings.php:234
+#: inc/settings.php:258
 msgid "All Cookie Categories"
 msgstr ""
 
-#: inc/settings.php:262
+#: inc/settings.php:287
 msgid "Cookie Consent"
 msgstr ""
 
-#: inc/settings.php:292
+#: inc/settings.php:317
 msgid ""
 "The currently selected Privacy Policy page does not exist. Please create or "
 "select a new page."
 msgstr ""
 
 #. translators: %s: URL to Pages Trash.
-#: inc/settings.php:302
+#: inc/settings.php:327
 #, php-format
 msgid ""
 "The currently selected Privacy Policy page is in the Trash. Please create or "
@@ -324,42 +411,42 @@ msgid ""
 "a>."
 msgstr ""
 
-#: inc/settings.php:313
+#: inc/settings.php:338
 msgid "Update your Privacy Policy page"
 msgstr ""
 
-#: inc/settings.php:313
+#: inc/settings.php:338
 msgid "Select a Privacy Policy page"
 msgstr ""
 
-#: inc/settings.php:327
+#: inc/settings.php:353
 msgid ""
 "As a website owner, you may need to follow national or international privacy "
 "laws. For example, you may need to create and display a Privacy Policy."
 msgstr ""
 
-#: inc/settings.php:328
+#: inc/settings.php:354
 msgid ""
 "If you already have a Privacy Policy page, please select it below. If not, "
 "please create one."
 msgstr ""
 
-#: inc/settings.php:331
+#: inc/settings.php:357
 msgid "The new page will include help and suggestions for your Privacy Policy."
 msgstr ""
 
-#: inc/settings.php:332
+#: inc/settings.php:358
 msgid ""
 "However, it is your responsibility to use those resources correctly, to "
 "provide the information that your Privacy Policy requires, and to keep that "
 "information current and accurate."
 msgstr ""
 
-#: inc/settings.php:335
+#: inc/settings.php:361
 msgid "After your Privacy Policy page is set, we suggest that you edit it."
 msgstr ""
 
-#: inc/settings.php:336
+#: inc/settings.php:362
 msgid ""
 "We would also suggest reviewing your Privacy Policy from time to time, "
 "especially after installing or updating any themes or plugins. There may be "
@@ -367,67 +454,61 @@ msgid ""
 "policy."
 msgstr ""
 
-#: inc/settings.php:395
+#: inc/settings.php:425
 msgid "Secondary menu"
 msgstr ""
 
 #. translators: Tab heading for Site Health Status page.
-#: inc/settings.php:399
+#: inc/settings.php:429
 msgctxt "Privacy Settings"
 msgid "Settings"
 msgstr ""
 
-#. translators: Tab heading for Site Health Status page.
-#: inc/settings.php:406
-msgctxt "Privacy Settings"
-msgid "Policy Guide"
-msgstr ""
-
-#: inc/settings.php:422
+#: inc/settings.php:456
 msgid "Save Privacy Settings"
 msgstr ""
 
-#: inc/settings.php:476
+#: inc/settings.php:515
 msgid "Do not display banner"
 msgstr ""
 
-#: inc/settings.php:479
+#: inc/settings.php:518
 msgid "Display consent banner"
 msgstr ""
 
-#: inc/settings.php:493
+#: inc/settings.php:533
 msgid "How long, in days, cookies should be stored."
 msgstr ""
 
-#: inc/settings.php:514
+#: inc/settings.php:555
 msgid ""
 "If you would like to display an option to configure each cookie category in "
 "the consent banner, select All Cookie Categories."
 msgstr ""
 
-#: inc/settings.php:515
+#: inc/settings.php:556
 msgid ""
 "If you would like to only display an option to accept or deny all non-"
 "functional cookies, select Allow/Deny All Cookies."
 msgstr ""
 
-#: inc/settings.php:531
+#: inc/settings.php:573
 msgid "This site uses cookies to provide a better user experience."
 msgstr ""
 
-#: inc/settings.php:597 inc/settings.php:618
+#: inc/settings.php:643 inc/settings.php:665
 msgid "Select an option"
 msgstr ""
 
-#: inc/settings.php:603 inc/settings.php:624
+#: inc/settings.php:649 inc/settings.php:671
 msgid "There are no pages."
 msgstr ""
 
-#: inc/settings.php:606
+#: inc/settings.php:652
 msgid "Create Cookie Policy Page"
 msgstr ""
 
-#: inc/settings.php:627
+#: inc/settings.php:674
 msgid "Create Privacy Policy Page"
 msgstr ""
 
@@ -466,12 +547,16 @@ msgstr ""
 msgid "Apply Changes"
 msgstr ""
 
+#: tmpl/cookie-preferences.php:43
+msgid "Cancel"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
-msgid "Ouun Consent"
+msgid "Cookie Consent by ouun.io"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/humanmade/altis-consent"
+msgid "https://github.com/ouun/ouun-consent/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -481,7 +566,7 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Human Made, ouun.io"
+msgid "ouun.io"
 msgstr ""
 
 #. Author URI of the plugin/theme

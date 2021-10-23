@@ -10,25 +10,26 @@ use function Ouun\Consent\Settings\get_consent_option;
 use function Ouun\Consent\Settings\is_ouun_privacy_page;
 use function Ouun\Consent\Settings\render_ouun_privacy_page_header;
 
-function bootstrap() {
+function bootstrap()
+{
     /**
      * Register ACF Cookies Options Page and Fields
      */
-    add_action('acf/init', function() {
+    add_action('acf/init', function () {
         $domain = get_cookie_domain();
         $option_page = acf_add_options_page(array(
-            'page_title' 	    => __('Cookies', 'ouun-consent'),
-            'menu_slug' 	    => 'ouun_privacy_cookies',
-            'capability'	    => 'manage_options',
+            'page_title'        => __('Cookies', 'ouun-consent'),
+            'menu_slug'         => 'ouun_privacy_cookies',
+            'capability'        => 'manage_options',
             'parent_slug'       => 'options-general.php',
-            'redirect'		    => false,
+            'redirect'          => false,
             'position'          => 677,
             'update_button'     => __('Update Cookies', 'ouun-consent'),
             'updated_message'   => __('Cookies updated', 'ouun-consent'),
         ));
 
         $cookies = new FieldsBuilder('cookies', [
-            'title' => sprintf( __( 'Cookies on %1$s', 'ouun-consent' ), $domain ),
+            'title' => sprintf(__('Cookies on %1$s', 'ouun-consent'), $domain),
         ]);
 
         $cookies->setLocation('options_page', '==', $option_page['menu_slug']);
@@ -39,7 +40,7 @@ function bootstrap() {
                     'label' => $label,
                 ])
                 ->addTextarea('category_description_' . $category, [
-                    'label'         => sprintf( __( '%1$s Cookies Description', 'ouun-consent' ), $label ),
+                    'label'         => sprintf(__('%1$s Cookies Description', 'ouun-consent'), $label),
                     'placeholder'   => wp_strip_all_tags(implode(' ', get_cookie_category_description($category))),
                     'required'      => 0,
                     'new_lines'     => 'wpautop',
@@ -61,7 +62,8 @@ function bootstrap() {
                             'width'     => '50'
                         ],
                     ])
-                    ->addText('domain',
+                    ->addText(
+                        'domain',
                         [
                             'label'         => __('Domain', 'ouun-consent'),
                             // 'instructions'  => __('The name of the domain to associate the cookie with.', 'ouun-consent'),
@@ -71,23 +73,26 @@ function bootstrap() {
                             'wrapper'   => [
                                 'width' => '25'
                             ],
-                        ])
+                        ]
+                    )
                     ->addText('expires', [
                         'label'         => __('Expiration', 'ouun-consent'),
                         // 'instructions'  => __('The expiration time at which the cookie expires.', 'ouun-consent'),
-                        'placeholder'   => sprintf( __( 'e.g. %1$s days', 'ouun-consent' ), get_consent_option( 'cookie_expiration' ) ),
+                        'placeholder'   => sprintf(__('e.g. %1$s days', 'ouun-consent'), get_consent_option('cookie_expiration')),
                         'required'      => 1,
                         'wrapper'   => [
                             'width' => '25'
                         ],
                     ])
-                    ->addTextarea('description',
-                    [
+                    ->addTextarea(
+                        'description',
+                        [
                         'label'         => __('Description', 'ouun-consent'),
                         'placeholder' => '',
                         'required' => 1,
                         'rows' => '3',
-                    ]);
+                        ]
+                    );
         }
 
         acf_add_local_field_group($cookies->build());
@@ -104,10 +109,10 @@ function bootstrap() {
      * Register additional Options Page
      * Hooked before ACF Options Page to add header with tabs
      */
-    add_action( 'admin_menu', function () {
+    add_action('admin_menu', function () {
         add_options_page(
-            __( 'Cookies Settings', 'ouun-consent' ),
-            __( 'Cookies', 'ouun-consent' ),
+            __('Cookies Settings', 'ouun-consent'),
+            __('Cookies', 'ouun-consent'),
             'manage_options',
             'ouun_privacy_cookies',
             __NAMESPACE__ . '\\render_ouun_cookies_page'
@@ -120,7 +125,7 @@ function bootstrap() {
     /**
      * Remove admin submenu added by ACF
      */
-    add_action( 'admin_menu', function () {
+    add_action('admin_menu', function () {
         remove_submenu_page('options-general.php', 'ouun_privacy_cookies');
     }, 200);
 
@@ -128,7 +133,7 @@ function bootstrap() {
      * Set single column layout
      */
     add_action('load-settings_page_ouun_privacy_cookies', function () {
-        add_screen_option('layout_columns', array('max'	=> 1, 'default' => 1));
+        add_screen_option('layout_columns', array('max' => 1, 'default' => 1));
     }, 20);
 
     /**
@@ -137,11 +142,11 @@ function bootstrap() {
     add_action('ouun.consent.settings_header_tabs', function () {
         $active_class = 'class="privacy-settings-tab active" aria-current="true"';
         $class = 'class="privacy-settings-tab"';
-       ?>
-            <a href="<?php echo esc_url( admin_url( 'options-general.php?page=ouun_privacy_cookies' ) ); ?>" <?php echo is_ouun_privacy_page('settings_page_ouun_privacy_cookies') ? $active_class : $class; ?>>
+        ?>
+            <a href="<?php echo esc_url(admin_url('options-general.php?page=ouun_privacy_cookies')); ?>" <?php echo is_ouun_privacy_page('settings_page_ouun_privacy_cookies') ? $active_class : $class; ?>>
                 <?php
                 /* translators: Tab heading for Cookies page. */
-                _ex( 'Cookies', 'Privacy Settings' );
+                _ex('Cookies', 'Privacy Settings');
                 ?>
             </a>
         <?php
@@ -160,7 +165,7 @@ function bootstrap() {
     foreach (consent_categories() as $category => $label) {
         add_filter('acf/load_value/name=category_' . $category, function ($cookies, $post_id, $field) use ($category) {
             // Only add defaults when empty.
-            if ( ! is_array($cookies) ) {
+            if (! is_array($cookies)) {
                 $cookies = [];
                 $key = $field['key'] . "_cookie";
                 $base_cookies = apply_filters("ouun.consent.cookies_$category", get_default_cookies($category));
@@ -187,7 +192,7 @@ function bootstrap() {
      * [cookies description category=""]
      */
     if (!shortcode_exists('cookies')) {
-        add_shortcode( 'cookies', function ($attributes) {
+        add_shortcode('cookies', function ($attributes) {
             $get = $attributes[0] ?? 'table';
 
             $attributes = shortcode_atts(
@@ -198,7 +203,7 @@ function bootstrap() {
                 'cookies'
             );
 
-            if($get === 'description' && $attributes['category']) {
+            if ($get === 'description' && $attributes['category']) {
                 return get_cookies_category_description($attributes['category']);
             } else if ($get === 'table') {
                 return get_cookies_table($attributes['category'] ?? '');
@@ -222,7 +227,7 @@ function bootstrap() {
                 'publish_date'
             );
 
-            return esc_html( get_the_date( '', $attributes['post_id'] ) );
+            return esc_html(get_the_date('', $attributes['post_id']));
         });
     }
 }
@@ -260,7 +265,7 @@ function get_cookies_table(string $category = ''): string
 
     ob_start();
 
-    if($cookies) {
+    if ($cookies) {
         ?>
         <table>
             <thead>
@@ -309,8 +314,8 @@ function get_cookies(string $category = '')
         }
     }
 
-    if ( $cookies_array ) {
-        foreach( $cookies_array as $cookie ) {
+    if ($cookies_array) {
+        foreach ($cookies_array as $cookie) {
             $cookies[] = $cookie['cookie'];
         }
     }
@@ -378,7 +383,7 @@ function get_default_cookies($category): array
         $cookies['preferences'][] = [
             'name' => cookie_prefix() . '_' . $cookies_category,
             'domain' => get_cookie_domain(),
-            'expires' => sprintf( __( '%1$s days', 'ouun-consent' ), get_consent_option( 'cookie_expiration' ) ),
+            'expires' => sprintf(__('%1$s days', 'ouun-consent'), get_consent_option('cookie_expiration')),
             'description' => "Stores your consent for $label Cookies."
         ];
     }
@@ -389,26 +394,28 @@ function get_default_cookies($category): array
 /**
  * Renders the Cookies Settings Page
  */
-function render_ouun_cookies_page() {
+function render_ouun_cookies_page()
+{
     ob_start();
 
         render_ouun_privacy_page_header();
-        ?>
+    ?>
             <div class="privacy-settings-body">
         <?php
 
-    echo ob_get_clean();
+        echo ob_get_clean();
 }
 
 /**
  * Filter consent for dynamic Category Descriptions via Shortcodes
  */
-function overwrite_cookies_categories_description() {
+function overwrite_cookies_categories_description()
+{
     foreach (consent_categories() as $category => $label) {
         $category_description = get_field('description_' . $category, 'option');
         if (!empty($category_description)) {
             add_filter("ouun.consent.cookie_policy_content_$category", function () use ($category_description) {
-                return preg_split('[(<p[^>]*>.*?</p>)]', $category_description, NULL, PREG_SPLIT_DELIM_CAPTURE);
+                return preg_split('[(<p[^>]*>.*?</p>)]', $category_description, null, PREG_SPLIT_DELIM_CAPTURE);
             });
         }
 

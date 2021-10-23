@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Ouun Consent
+ * Plugin Name: Cookie Consent by ouun.io
  * Plugin URI: https://github.com/ouun/ouun-consent/
  * Description: Hooks into the Consent API to provide basic settings and a cookie consent banner.
  * Version: 1.0.6
@@ -22,7 +22,7 @@ require_once __DIR__ . '/inc/settings.php';
 bootstrap();
 Settings\bootstrap();
 
-if ( function_exists('acf_add_options_page') ) {
+if (function_exists('acf_add_options_page')) {
     require_once __DIR__ . '/inc/cookie-settings.php';
     CookieSettings\bootstrap();
 }
