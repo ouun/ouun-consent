@@ -129,14 +129,14 @@ Ouun.Consent.updateCategories = function () {
 	}
 
 	// If we're consenting to all cookies, add all categories to the selected array.
-	if ( this.className === 'give-consent' ) {
+	if ( this.classList.contains('give-consent') ) {
 		// Accept all categories.
 		for ( const category of ouunConsent.categories ) {
 			selected.push( category );
 		}
 
 		unselected = [];
-	} else if ( this.className === 'revoke-consent' ) {
+	} else if ( this.classList.contains('revoke-consent') ) {
 		// If we're only consenting to functional cookies, only add that category to selected and all others to unselected.
 		for ( const category of ouunConsent.categories ) {
 			if ( ! ouunConsent.alwaysAllowCategories.includes( category ) ) {
