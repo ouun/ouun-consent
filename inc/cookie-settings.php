@@ -101,7 +101,7 @@ function bootstrap()
     /**
      * Overwrite default consent categories description with ACF field value
      */
-    add_action('plugins_loaded', function () {
+    add_action('acf/init', function () {
         overwrite_cookies_categories_description();
     });
 
